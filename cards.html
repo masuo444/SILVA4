@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>カードの説明 | SILVA カードゲーム</title>
+    <meta name="description" content="SILVAカードゲームの全11種類のカード効果を詳しく説明します。">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <style>
+        .cards-page {
+            min-height: 100vh;
+            padding-top: 100px;
+            padding-bottom: 60px;
+        }
+        .cards-page-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .cards-page-header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: var(--color-primary-light);
+            margin-bottom: 12px;
+        }
+        .cards-page-header p {
+            color: var(--color-text-secondary);
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--color-primary-light); }
+
+        .card-explain {
+            background: var(--color-bg-card);
+            border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+            border-radius: 16px;
+            margin-bottom: 24px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .card-explain:hover {
+            border-color: rgba(var(--color-primary-rgb), 0.4);
+        }
+        .card-explain-inner {
+            display: flex;
+            gap: 24px;
+            padding: 24px;
+            align-items: flex-start;
+        }
+        @media (max-width: 640px) {
+            .card-explain-inner {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 16px;
+                padding: 20px 16px;
+            }
+        }
+        .card-explain-img {
+            flex-shrink: 0;
+            width: 110px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+        }
+        @media (max-width: 640px) {
+            .card-explain-img { width: 100px; }
+        }
+        .card-explain-body { flex: 1; min-width: 0; }
+        .card-explain-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 4px;
+            flex-wrap: wrap;
+        }
+        @media (max-width: 640px) {
+            .card-explain-title { justify-content: center; }
+        }
+        .card-explain-title h2 {
+            font-size: clamp(1.15rem, 3vw, 1.4rem);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin: 0;
+        }
+        .card-explain-number {
+            background: rgba(var(--color-primary-rgb), 0.15);
+            color: var(--color-primary-light);
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .card-explain-effect {
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.88rem;
+            margin-bottom: 10px;
+        }
+        .card-count {
+            display: inline-block;
+            background: rgba(255,255,255,0.06);
+            color: var(--color-text-muted);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            margin-left: 4px;
+        }
+        .card-explain-text {
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+        .category-heading {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 48px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(var(--color-primary-rgb), 0.2);
+        }
+        .category-heading h2 {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: 700;
+            color: var(--color-primary-light);
+            margin: 0;
+        }
+        .category-badge {
+            background: rgba(var(--color-primary-rgb), 0.15);
+            color: var(--color-primary);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .cards-page-cta {
+            text-align: center;
+            margin-top: 56px;
+            padding: 32px 20px;
+            background: rgba(var(--color-primary-rgb), 0.06);
+            border-radius: 16px;
+        }
+        .cards-page-cta p {
+            color: var(--color-text-secondary);
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        .cards-page-cta .btn { margin: 0 8px 8px; }
+
+        /* 簡易ヘッダー */
+        .simple-header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(6, 13, 8, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(var(--color-primary-rgb), 0.1);
+            padding: 16px 0;
+        }
+        .simple-header .container {
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .simple-header .brand-link {
+            text-decoration: none; display: flex; align-items: baseline; gap: 8px;
+        }
+        .simple-header .brand-text {
+            font-size: 1.4rem; font-weight: 800; color: var(--color-primary-light);
+        }
+        .simple-header .brand-subtitle {
+            font-size: 0.7rem; color: var(--color-text-muted);
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+        .simple-header .header-nav { display: flex; gap: 16px; align-items: center; }
+        .simple-header .header-nav a {
+            color: var(--color-text-secondary); text-decoration: none;
+            font-size: 0.9rem; font-weight: 500; transition: color 0.2s;
+        }
+        .simple-header .header-nav a:hover { color: var(--color-primary-light); }
+        .simple-header .header-nav .kids-link {
+            background: rgba(255, 200, 60, 0.1);
+            border: 1px solid rgba(255, 200, 60, 0.3);
+            color: #ffc83c;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .simple-header .header-nav .kids-link:hover {
+            background: rgba(255, 200, 60, 0.18);
+            color: #ffe080;
+        }
+        .simple-header .header-nav .lang-link {
+            background: rgba(100, 180, 255, 0.1);
+            border: 1px solid rgba(100, 180, 255, 0.3);
+            color: #78beff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .simple-header .header-nav .lang-link:hover {
+            background: rgba(100, 180, 255, 0.2);
+            color: #a0d0ff;
+        }
+        @media (max-width: 640px) {
+            .simple-header .header-nav { gap: 8px; flex-wrap: wrap; }
+            .simple-header .header-nav a { font-size: 0.78rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="simple-header">
+        <div class="container">
+            <a href="index.html" class="brand-link">
+                <span class="brand-text">SILVA</span>
+                <span class="brand-subtitle">CARD GAME</span>
+            </a>
+            <nav class="header-nav">
+                <a href="index.html">トップ</a>
+                <a href="index.html#rules">ルール</a>
+                <a href="index.html#buy">購入</a>
+                <a href="cards-kids.html" class="kids-link">こども用はこちら</a>
+                <a href="cards-en.html" class="lang-link">English</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="cards-page">
+        <div class="container">
+
+            <a href="index.html#cards" class="back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                トップにもどる
+            </a>
+
+            <div class="cards-page-header">
+                <h1>カードの説明</h1>
+                <p>SILVAの全11種類のカード効果を解説します。各カードの戦略的な使い方を把握しましょう。</p>
+            </div>
+
+            <!-- No.0 幼きククノチ -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/11.png" alt="幼きククノチ" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>幼きククノチ</h2>
+                            <span class="card-explain-number">No.0</span>
+                            <span class="card-count">1枚（再生札）</span>
+                        </div>
+                        <div class="card-explain-effect">効果：光合成</div>
+                        <div class="card-explain-text">
+                            通常は効果なし。ゲーム開始時に山札の横に配置される特殊カード。<br>
+                            ククノチ（No.10）が再生する際にのみ手札に加わる。山札切れ時の数字勝負（1対1）において精霊（No.8）にだけ勝つ特殊ルールを持つ。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.1 少年 -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/1.png" alt="少年" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>少年</h2>
+                            <span class="card-explain-number">No.1</span>
+                            <span class="card-count">2枚</span>
+                        </div>
+                        <div class="card-explain-effect">効果：変革</div>
+                        <div class="card-explain-text">
+                            <strong>1枚目：</strong>効果なし。<br>
+                            <strong>2枚目：</strong>場に2枚目が出ると、刀の少女（No.9）と同じ効果が発動する。相手に1枚引かせて手札2枚を公開させ、1枚を選んで捨てさせる。<br>
+                            数字は最も小さいが、2枚揃うと強力な遅効性フィニッシャー。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.2 訓練生 -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/2.png" alt="訓練生" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>訓練生</h2>
+                            <span class="card-explain-number">No.2</span>
+                            <span class="card-count">2枚</span>
+                        </div>
+                        <div class="card-explain-effect">効果：特攻</div>
+                        <div class="card-explain-text">
+                            指名した相手の手札のカード名を宣言する。的中すれば相手は脱落。外れた場合は何も起きない。<br>
+                            ギャンブル性の高いカードだが、偵察隊で事前に手札を確認していれば確実に仕留められる。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.3 偵察隊 -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/3.png" alt="偵察隊" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>偵察隊</h2>
+                            <span class="card-explain-number">No.3</span>
+                            <span class="card-count">2枚</span>
+                        </div>
+                        <div class="card-explain-effect">効果：偵察</div>
+                        <div class="card-explain-text">
+                            指名した相手の手札を自分だけが確認できる。確認した内容を他プレイヤーに伝えることは禁止。<br>
+                            情報収集のスペシャリスト。得た情報を基に次の手を組み立てる。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.4 戦士 -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/4.png" alt="戦士" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>戦士</h2>
+                            <span class="card-explain-number">No.4</span>
+                            <span class="card-count">2枚</span>
+                        </div>
+                        <div class="card-explain-effect">効果：格闘</div>
+                        <div class="card-explain-text">
+                            指名した相手に山札から1枚引かせる。相手の手札は非公開のまま、カード名を1つ指定して捨てさせる。<br>
+                            情報なしでの指名が必要だが、偵察隊との組み合わせで精度が上がる。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.5 蔵人 -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/5.png" alt="蔵人" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>蔵人</h2>
+                            <span class="card-explain-number">No.5</span>
+                            <span class="card-count">1枚</span>
+                        </div>
+                        <div class="card-explain-effect">効果：醸造</div>
+                        <div class="card-explain-text">
+                            指名した相手と手札を見せ合い、数字が小さい方が脱落する。同値の場合は両者脱落。<br>
+                            一騎討ちの勝負カード。自分の手札が相手より大きいと確信できるときに有効。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.6 枡職人 -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/6.png" alt="枡職人" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>枡職人</h2>
+                            <span class="card-explain-number">No.6</span>
+                            <span class="card-count">2枚</span>
+                        </div>
+                        <div class="card-explain-effect">効果：製造／守護</div>
+                        <div class="card-explain-text">
+                            <strong>1枚目（製造）：</strong>効果なし。<br>
+                            <strong>2枚目（守護）：</strong>「FOMUS」と宣言することで守護枡を召喚。1度だけ脱落を無効化するバリアを得る。<br>
+                            保険としての役割を持つ。2枚揃えることで真価を発揮する。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.7 農家 -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/7.png" alt="農家" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>農家</h2>
+                            <span class="card-explain-number">No.7</span>
+                            <span class="card-count">2枚</span>
+                        </div>
+                        <div class="card-explain-effect">効果：栽培／収穫</div>
+                        <div class="card-explain-text">
+                            <strong>1枚目（栽培）：</strong>次の自分の手番で山札から2枚見て1枚を選択。残りは山札に戻す。<br>
+                            <strong>2枚目（収穫）：</strong>3枚の中から1枚を選択。残りは山札に戻す。<br>
+                            山札操作の専門家。欲しいカードを効率的に手に入れられる。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.8 精霊 -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/8.png" alt="精霊" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>精霊</h2>
+                            <span class="card-explain-number">No.8</span>
+                            <span class="card-count">2枚</span>
+                        </div>
+                        <div class="card-explain-effect">効果：思念</div>
+                        <div class="card-explain-text">
+                            指名した相手と自分の手札を交換する。<br>
+                            自分の手札が弱い場合に相手の強いカードを奪う、あるいは不要なカードを相手に押し付ける戦術が可能。状況判断が重要なカード。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.9 刀の少女 -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/9.png" alt="刀の少女" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>刀の少女</h2>
+                            <span class="card-explain-number">No.9</span>
+                            <span class="card-count">1枚</span>
+                        </div>
+                        <div class="card-explain-effect">効果：一閃</div>
+                        <div class="card-explain-text">
+                            指名した相手に山札から1枚引かせ、手札2枚を全て公開させる。その中から1枚を選んで捨てさせる。<br>
+                            <strong>ククノチ（No.10）を確実に討てる唯一のカード。</strong>ククノチの再生効果を無効化し、完全に脱落させることができる。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.10 ククノチ -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/10.png" alt="ククノチ" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>ククノチ</h2>
+                            <span class="card-explain-number">No.10</span>
+                            <span class="card-count">1枚</span>
+                        </div>
+                        <div class="card-explain-effect">効果：再生</div>
+                        <div class="card-explain-text">
+                            場に出すことはできない。他プレイヤーの効果で捨てさせられると脱落となる。<br>
+                            ただし<strong>刀の少女（No.9）以外</strong>のカードで倒された場合、手札を全て捨てたうえで「再生札（幼きククノチ）」を引いて復活する。<br>
+                            数字が最大のため、手札に残し続けることで山札切れ時の数字勝負で圧倒的に有利。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cards-page-cta">
+                <p>カードの効果を把握したら、実際にプレイしてみましょう。</p>
+                <a href="index.html#rules" class="btn btn-secondary btn-outline">
+                    <span class="btn-text">ルールを見る</span>
+                </a>
+                <a href="index.html#buy" class="btn btn-primary">
+                    <span class="btn-text">SILVAを購入する</span>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="copyright">
+                        <p>&copy; 2025 FOMUS. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

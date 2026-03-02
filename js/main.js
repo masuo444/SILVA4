@@ -1,13 +1,14 @@
 /*
 ===========================================
 SILVA - 心理戦カードゲーム Main JavaScript
-Version: 7.0 (Ultimate Edition)
+Version: 8.0 (Premium Edition)
 Author: FOMUS
 ===========================================
 */
 
 // SILVA Card Data (Updated with Official Information)
-const SILVA_CARDS = [
+// Supports language override: define window.SILVA_CARDS_OVERRIDE before loading this script
+const SILVA_CARDS = window.SILVA_CARDS_OVERRIDE || [
     {
         id: 10,
         name: "ククノチ",
@@ -165,7 +166,7 @@ function initializeApp() {
     initializeCardsToggle();
     initializeModals();
     initializeCounters();
-    initializeParticles();
+    initializeAmbientGlow();
     initializeTilt();
     initializeFAB();
     
@@ -346,7 +347,7 @@ function initializeCardsToggle() {
             cardsGridContainer.classList.add('show');
             
             cardsToggleBtn.classList.add('active');
-            cardsToggleBtn.querySelector('.toggle-text').textContent = 'カード一覧を閉じる';
+            cardsToggleBtn.querySelector('.toggle-text').textContent = window.SILVA_CARDS_OVERRIDE ? 'Hide Cards' : 'カード一覧を閉じる';
             
             // Ensure all cards are rendered and force re-render
             setTimeout(() => {
@@ -367,7 +368,7 @@ function initializeCardsToggle() {
             cardsGridContainer.classList.remove('show');
             
             cardsToggleBtn.classList.remove('active');
-            cardsToggleBtn.querySelector('.toggle-text').textContent = 'カード一覧を見る';
+            cardsToggleBtn.querySelector('.toggle-text').textContent = window.SILVA_CARDS_OVERRIDE ? 'View Cards' : 'カード一覧を見る';
             
             // Hide completely after animation
             setTimeout(() => {
@@ -436,9 +437,6 @@ function createCardElement(card, index) {
         <div class="card-artwork">
             <img src="${card.image}" alt="${card.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="card-placeholder" style="display:none;">${card.name}</div>
-        </div>
-        <div class="card-description">
-            <p>${card.description}</p>
         </div>
     `;
 
@@ -583,50 +581,11 @@ function initializeCounters() {
     });
 }
 
-// Particles System
-function initializeParticles() {
+// Ambient glow effect (lightweight replacement for particles)
+function initializeAmbientGlow() {
     const heroParticles = document.getElementById('heroParticles');
     if (!heroParticles) return;
-
-    // Create floating particles
-    for (let i = 0; i < 20; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.cssText = `
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(0, 212, 255, 0.6);
-            border-radius: 50%;
-            animation: floatParticle ${5 + Math.random() * 10}s linear infinite;
-            left: ${Math.random() * 100}%;
-            top: ${Math.random() * 100}%;
-            animation-delay: ${Math.random() * 5}s;
-        `;
-        heroParticles.appendChild(particle);
-    }
-
-    // Add particle animation styles
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes floatParticle {
-            0% {
-                transform: translateY(0px) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-    `;
-    document.head.appendChild(style);
+    // Ambient glow is handled purely via CSS gradients now
 }
 
 // Tilt Effect
@@ -771,14 +730,7 @@ const optimizedScroll = throttle(handleScroll, 16);
 window.addEventListener('scroll', optimizedScroll);
 
 // Console welcome message
-console.log(`
-🎮 SILVA Card Game Website v7.0
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🃏 心理戦カードゲームの世界へようこそ！
-🚀 Developed by FOMUS
-💫 Built with ❤️ for the community
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-`);
+console.log('SILVA Card Game v8.0 — by FOMUS');
 
 // Export for potential module use
 if (typeof module !== 'undefined' && module.exports) {

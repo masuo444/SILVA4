@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>こども用ページ | SILVA カードゲーム</title>
+    <meta name="description" content="SILVAカードゲームの遊び方とカードの説明を、小学生にもわかりやすく紹介します。">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <style>
+        /* === こども用ページ固有スタイル === */
+        .kids-page {
+            min-height: 100vh;
+            padding-top: 100px;
+            padding-bottom: 60px;
+        }
+
+        .kids-page-header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+        .kids-page-header .kids-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 200, 60, 0.12);
+            border: 1px solid rgba(255, 200, 60, 0.3);
+            color: #ffc83c;
+            padding: 6px 18px;
+            border-radius: 24px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .kids-page-header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: var(--color-primary-light);
+            margin-bottom: 12px;
+        }
+        .kids-page-header p {
+            color: var(--color-text-secondary);
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--color-primary-light); }
+
+        /* ページ内ナビ */
+        .page-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+        .page-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+        .page-nav .nav-rules {
+            background: rgba(var(--color-primary-rgb), 0.12);
+            border: 1px solid rgba(var(--color-primary-rgb), 0.3);
+            color: var(--color-primary-light);
+        }
+        .page-nav .nav-rules:hover {
+            background: rgba(var(--color-primary-rgb), 0.22);
+        }
+        .page-nav .nav-cards {
+            background: rgba(100, 180, 255, 0.1);
+            border: 1px solid rgba(100, 180, 255, 0.3);
+            color: #78beff;
+        }
+        .page-nav .nav-cards:hover {
+            background: rgba(100, 180, 255, 0.2);
+        }
+
+        /* === ルールセクション === */
+        .kids-section-title {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+        .kids-section-title h2 {
+            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            font-weight: 800;
+            color: var(--color-primary-light);
+            margin-bottom: 8px;
+        }
+        .kids-section-title p {
+            color: var(--color-text-secondary);
+            font-size: 1rem;
+        }
+
+        .rule-box {
+            background: var(--color-bg-card);
+            border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+            border-radius: 16px;
+            padding: 28px 24px;
+            margin-bottom: 24px;
+            transition: border-color 0.3s;
+        }
+        .rule-box:hover {
+            border-color: rgba(var(--color-primary-rgb), 0.35);
+        }
+
+        .rule-box-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+        .rule-step-num {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+        .rule-box-header h3 {
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin: 0;
+        }
+
+        .rule-box-body {
+            color: var(--color-text-secondary);
+            line-height: 2;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+        }
+        .rule-box-body strong {
+            color: var(--color-primary-light);
+            font-weight: 600;
+        }
+
+        .rule-note {
+            margin-top: 14px;
+            padding: 12px 16px;
+            background: rgba(255, 200, 60, 0.08);
+            border-radius: 10px;
+            border-left: 3px solid #ffc83c;
+        }
+        .rule-note p {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+        .rule-note .note-label {
+            color: #ffc83c;
+            font-weight: 700;
+            margin-right: 6px;
+        }
+
+        .kids-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(var(--color-primary-rgb), 0.2), transparent);
+            margin: 56px 0;
+            border: none;
+        }
+
+        /* === カード説明 === */
+        .card-explain {
+            background: var(--color-bg-card);
+            border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+            border-radius: 16px;
+            margin-bottom: 28px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .card-explain:hover {
+            border-color: rgba(var(--color-primary-rgb), 0.4);
+        }
+        .card-explain-inner {
+            display: flex;
+            gap: 24px;
+            padding: 24px;
+            align-items: flex-start;
+        }
+        @media (max-width: 640px) {
+            .card-explain-inner {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 16px;
+                padding: 20px 16px;
+            }
+        }
+        .card-explain-img {
+            flex-shrink: 0;
+            width: 120px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+        }
+        @media (max-width: 640px) {
+            .card-explain-img { width: 100px; }
+        }
+        .card-explain-body { flex: 1; min-width: 0; }
+        .card-explain-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+        }
+        @media (max-width: 640px) {
+            .card-explain-title { justify-content: center; }
+        }
+        .card-explain-title h3 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin: 0;
+        }
+        .card-explain-number {
+            background: rgba(var(--color-primary-rgb), 0.15);
+            color: var(--color-primary-light);
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .card-explain-effect {
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+        .card-explain-text {
+            color: var(--color-text-secondary);
+            line-height: 1.9;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+        }
+        .card-explain-text strong {
+            color: var(--color-primary-light);
+            font-weight: 600;
+        }
+        .card-explain-tip {
+            margin-top: 14px;
+            padding: 12px 16px;
+            background: rgba(var(--color-primary-rgb), 0.08);
+            border-radius: 10px;
+            border-left: 3px solid var(--color-primary);
+        }
+        .card-explain-tip p {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+        .card-explain-tip .tip-label {
+            color: var(--color-primary-light);
+            font-weight: 700;
+            margin-right: 6px;
+        }
+        .card-count {
+            display: inline-block;
+            background: rgba(255,255,255,0.06);
+            color: var(--color-text-muted);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            margin-left: 8px;
+        }
+        .category-heading {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 48px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(var(--color-primary-rgb), 0.2);
+        }
+        .category-heading h3 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 700;
+            color: var(--color-primary-light);
+            margin: 0;
+        }
+        .category-badge {
+            background: rgba(var(--color-primary-rgb), 0.15);
+            color: var(--color-primary);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* ルール内イラスト */
+        .rule-illust {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 12px;
+            margin: 20px 0 8px;
+            flex-wrap: wrap;
+        }
+        .rule-illust img {
+            height: 90px;
+            width: auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+        }
+        @media (max-width: 640px) {
+            .rule-illust img { height: 70px; }
+        }
+        .rule-illust .illust-label {
+            display: block;
+            text-align: center;
+            color: #e0e0e0;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-top: 8px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+        }
+        .rule-illust .illust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .rule-illust .illust-arrow {
+            font-size: 2.2rem;
+            color: var(--color-primary-light);
+            align-self: center;
+            line-height: 1;
+            font-weight: 800;
+        }
+        .rule-illust .card-stack {
+            position: relative;
+            width: 68px;
+            height: 94px;
+        }
+        @media (max-width: 640px) {
+            .rule-illust .card-stack { width: 54px; height: 75px; }
+        }
+        .rule-illust .card-stack img {
+            position: absolute;
+            height: 90px;
+            border-radius: 6px;
+        }
+        @media (max-width: 640px) {
+            .rule-illust .card-stack img { height: 70px; }
+        }
+        .rule-illust .card-stack img:nth-child(1) { top: 0; left: 0; }
+        .rule-illust .card-stack img:nth-child(2) { top: 2px; left: 3px; }
+        .rule-illust .card-stack img:nth-child(3) { top: 4px; left: 6px; }
+
+        .rule-illust-wide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin: 20px 0 8px;
+            flex-wrap: wrap;
+        }
+        .rule-illust-wide img {
+            height: 80px;
+            width: auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+        }
+        @media (max-width: 640px) {
+            .rule-illust-wide img { height: 60px; }
+        }
+        .rule-illust-wide .illust-label {
+            display: block;
+            text-align: center;
+            color: #e0e0e0;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-top: 8px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+        }
+        .rule-illust-wide .vs-text {
+            color: #ffc83c;
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+        .rule-illust-wide .illust-arrow {
+            font-size: 2.2rem;
+            color: var(--color-primary-light);
+            font-weight: 800;
+        }
+
+        /* CTA */
+        .kids-page-cta {
+            text-align: center;
+            margin-top: 56px;
+            padding: 32px 20px;
+            background: rgba(var(--color-primary-rgb), 0.06);
+            border-radius: 16px;
+        }
+        .kids-page-cta p {
+            color: var(--color-text-secondary);
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        .kids-page-cta .btn { margin: 0 8px 8px; }
+
+        /* 簡易ヘッダー */
+        .simple-header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(6, 13, 8, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 200, 60, 0.15);
+            padding: 16px 0;
+        }
+        .simple-header .container {
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .simple-header .brand-link {
+            text-decoration: none; display: flex; align-items: baseline; gap: 8px;
+        }
+        .simple-header .brand-text {
+            font-size: 1.4rem; font-weight: 800; color: #ffc83c;
+        }
+        .simple-header .brand-subtitle {
+            font-size: 0.7rem; color: var(--color-text-muted);
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+        .simple-header .kids-label {
+            background: rgba(255, 200, 60, 0.15);
+            color: #ffc83c;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-left: 4px;
+        }
+        .simple-header .header-nav { display: flex; gap: 16px; align-items: center; }
+        .simple-header .header-nav a {
+            color: var(--color-text-secondary); text-decoration: none;
+            font-size: 0.9rem; font-weight: 500; transition: color 0.2s;
+        }
+        .simple-header .header-nav a:hover { color: var(--color-primary-light); }
+        .simple-header .header-nav .lang-link {
+            background: rgba(100, 180, 255, 0.1);
+            border: 1px solid rgba(100, 180, 255, 0.3);
+            color: #78beff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .simple-header .header-nav .lang-link:hover {
+            background: rgba(100, 180, 255, 0.2);
+            color: #a0d0ff;
+        }
+        @media (max-width: 640px) {
+            .simple-header .header-nav { gap: 8px; flex-wrap: wrap; }
+            .simple-header .header-nav a { font-size: 0.78rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ヘッダー -->
+    <header class="simple-header">
+        <div class="container">
+            <a href="index.html" class="brand-link">
+                <span class="brand-text">SILVA</span>
+                <span class="brand-subtitle">CARD GAME</span>
+                <span class="kids-label">こども用</span>
+            </a>
+            <nav class="header-nav">
+                <a href="index.html">トップにもどる</a>
+                <a href="#rules">あそびかた</a>
+                <a href="#cards">カードせつめい</a>
+                <a href="cards-kids-en.html" class="lang-link">English</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="kids-page">
+        <div class="container">
+
+            <a href="index.html" class="back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                トップにもどる
+            </a>
+
+            <div class="kids-page-header">
+                <div class="kids-badge">こども用ページ</div>
+                <h1>SILVAのあそびかた</h1>
+                <p>SILVAは、カードをつかった「しんりせん（読みあい）」のゲームだよ。<br>ルールとカードのせつめいを、わかりやすくしょうかいするよ！</p>
+            </div>
+
+            <!-- ページ内ナビ -->
+            <div class="page-nav">
+                <a href="#rules" class="nav-rules">あそびかた・ルール</a>
+                <a href="#cards" class="nav-cards">カードのせつめい</a>
+            </div>
+
+
+            <!-- ============================================ -->
+            <!--  ルール・遊び方セクション                      -->
+            <!-- ============================================ -->
+            <section id="rules">
+                <div class="kids-section-title">
+                    <h2>あそびかた・ルール</h2>
+                    <p>ゲームのながれを、じゅんばんにせつめいするよ！</p>
+                </div>
+
+                <!-- ゲーム概要 -->
+                <div class="rule-box">
+                    <div class="rule-box-header">
+                        <div class="rule-step-num" style="background: linear-gradient(135deg, #b8860b, #ffc83c);">!</div>
+                        <h3>SILVAってどんなゲーム？</h3>
+                    </div>
+                    <div class="rule-box-body">
+                        <div class="rule-illust">
+                            <div class="illust-item">
+                                <img src="images/back.png" alt="SILVAカード裏面">
+                                <span class="illust-label">カードの裏面</span>
+                            </div>
+                            <div class="illust-item">
+                                <img src="images/10.png" alt="ククノチ">
+                                <span class="illust-label">ククノチ</span>
+                            </div>
+                            <div class="illust-item">
+                                <img src="images/9.png" alt="刀の少女">
+                                <span class="illust-label">刀の少女</span>
+                            </div>
+                            <div class="illust-item">
+                                <img src="images/5.png" alt="蔵人">
+                                <span class="illust-label">蔵人</span>
+                            </div>
+                        </div>
+                        SILVAは<strong>2〜4人</strong>であそべるカードゲームだよ。<br>
+                        1回のゲームは<strong>2〜10分</strong>くらいで終わるから、サクッとあそべるよ。<br><br>
+                        カードは<strong>ぜんぶで11しゅるい、18まい</strong>（＋ルールカード2まい）。<br>
+                        相手のカードを予想して、うまくたおしたり、自分をまもったりしながら<strong>最後まで生きのこった人が勝ち</strong>！
+                    </div>
+                </div>
+
+                <!-- ステップ1 -->
+                <div class="rule-box">
+                    <div class="rule-box-header">
+                        <div class="rule-step-num">1</div>
+                        <h3>じゅんびをしよう（セットアップ）</h3>
+                    </div>
+                    <div class="rule-box-body">
+                        <strong>① 「幼きククノチ」（No.0）を抜いて</strong>、のこりの17まいをよくまぜて、裏向き（うらむき）にかさねて<strong>「山札（やまふだ）」</strong>にするよ。<br><br>
+
+                        <div class="rule-illust">
+                            <div class="illust-item">
+                                <div class="card-stack">
+                                    <img src="images/back.png" alt="山札">
+                                    <img src="images/back.png" alt="山札">
+                                    <img src="images/back.png" alt="山札">
+                                </div>
+                                <span class="illust-label">山札（やまふだ）</span>
+                            </div>
+                            <div class="illust-item">
+                                <img src="images/11.png" alt="幼きククノチ" style="transform: rotate(90deg);">
+                                <span class="illust-label">再生札（よこむき）</span>
+                            </div>
+                        </div>
+
+                        <strong>② 「幼きククノチ」は山札のよこに横向き</strong>に置いてね。これが<strong>「再生札（さいせいふだ）」</strong>だよ。<br><br>
+                        <strong>③ ひとりずつ山札のいちばん上から1まいとって</strong>、自分だけが見える手札（てふだ）にするよ。<br><br>
+
+                        <div class="rule-illust">
+                            <div class="illust-item">
+                                <div class="card-stack">
+                                    <img src="images/back.png" alt="山札">
+                                    <img src="images/back.png" alt="山札">
+                                    <img src="images/back.png" alt="山札">
+                                </div>
+                                <span class="illust-label">山札から…</span>
+                            </div>
+                            <span class="illust-arrow">→</span>
+                            <div class="illust-item">
+                                <img src="images/back.png" alt="手札">
+                                <span class="illust-label">1まいとる＝手札</span>
+                            </div>
+                        </div>
+
+                        <strong>④ 最初にだれからはじめるか決めよう！</strong> じゃんけんでもOK。時計まわりでじゅんばんにすすめるよ。
+                    </div>
+                    <div class="rule-note">
+                        <p><span class="note-label">ヒント</span>カードはよーくシャッフルしてね。かたよるとつまらなくなっちゃうよ！</p>
+                    </div>
+                </div>
+
+                <!-- ステップ2 -->
+                <div class="rule-box">
+                    <div class="rule-box-header">
+                        <div class="rule-step-num">2</div>
+                        <h3>じぶんのターンでやること</h3>
+                    </div>
+                    <div class="rule-box-body">
+                        自分のばんがきたら、つぎの4つをじゅんばんにやるよ：<br><br>
+
+                        <strong>① 山札から1まいひく</strong><br>
+                        → 手札が2まいになるよ。<br>
+
+                        <div class="rule-illust">
+                            <div class="illust-item">
+                                <img src="images/back.png" alt="手札1">
+                                <span class="illust-label">もともとの手札</span>
+                            </div>
+                            <span class="illust-arrow">＋</span>
+                            <div class="illust-item">
+                                <img src="images/back.png" alt="山札からひく">
+                                <span class="illust-label">山札からひく</span>
+                            </div>
+                            <span class="illust-arrow">→</span>
+                            <div class="illust-item">
+                                <img src="images/back.png" alt="手札A">
+                            </div>
+                            <div class="illust-item">
+                                <img src="images/back.png" alt="手札B">
+                                <span class="illust-label">手札が2まいに！</span>
+                            </div>
+                        </div>
+
+                        <strong>② 2まいのなかから1まいえらんで、みんなの前に出す</strong><br>
+                        → 出したカードは表向き（おもてむき）にして見せるよ。<br>
+
+                        <div class="rule-illust">
+                            <div class="illust-item">
+                                <img src="images/back.png" alt="手札">
+                                <span class="illust-label">のこす（手札）</span>
+                            </div>
+                            <div class="illust-item">
+                                <img src="images/3.png" alt="出すカード">
+                                <span class="illust-label">出す！（表向き）</span>
+                            </div>
+                        </div>
+
+                        <strong>③ 出したカードの「効果（こうか）」をかならずつかう</strong><br>
+                        → カードにはそれぞれ特別な力があるよ。あとでせつめいするね！<br><br>
+                        <strong>④ つかったカードは自分の前にならべる（すて札）</strong><br>
+                        → 左から右にならべていくよ。
+                    </div>
+                    <div class="rule-note">
+                        <p><span class="note-label">だいじ！</span>出したカードの効果はかならず使わないといけないよ。「やっぱりやめた」はできないよ！</p>
+                    </div>
+                </div>
+
+                <!-- ステップ3 -->
+                <div class="rule-box">
+                    <div class="rule-box-header">
+                        <div class="rule-step-num">3</div>
+                        <h3>脱落（だつらく）ってなに？</h3>
+                    </div>
+                    <div class="rule-box-body">
+                        カードの効果でやられてしまったら<strong>「脱落」＝ゲームオーバー</strong>だよ。<br><br>
+
+                        <div class="rule-illust">
+                            <div class="illust-item">
+                                <img src="images/4.png" alt="戦士の効果">
+                                <span class="illust-label">相手のカード効果で…</span>
+                            </div>
+                            <span class="illust-arrow">→</span>
+                            <div class="illust-item">
+                                <img src="images/7.png" alt="手札を公開" style="opacity: 0.5;">
+                                <span class="illust-label">手札を公開して脱落</span>
+                            </div>
+                        </div>
+
+                        脱落したら<strong>自分の手札をみんなに見せて</strong>、すて札のところに置くよ。<br>
+                        あとはみんなのゲームを見ていてね。
+                    </div>
+                    <div class="rule-note">
+                        <p><span class="note-label">おぼえておこう</span>相手の効果でムリヤリすてさせられたカードは、効果がはつどうしないよ。自分で出したときだけ効果がつかえるんだ！</p>
+                    </div>
+                </div>
+
+                <!-- ステップ4 -->
+                <div class="rule-box">
+                    <div class="rule-box-header">
+                        <div class="rule-step-num">4</div>
+                        <h3>勝ちかた（しょうりじょうけん）</h3>
+                    </div>
+                    <div class="rule-box-body">
+                        ゲームが終わるのは、つぎの3つのどれかのとき：<br><br>
+                        <strong>① 山札がぜんぶなくなったとき</strong><br>
+                        → まだ残っている人みんなで手札を見せあって、<strong>数字がいちばん大きい人の勝ち！</strong> 同じ数字なら引き分けだよ。<br>
+
+                        <div class="rule-illust-wide">
+                            <div class="illust-item">
+                                <img src="images/10.png" alt="No.10">
+                                <span class="illust-label">No.10</span>
+                            </div>
+                            <span class="vs-text">VS</span>
+                            <div class="illust-item">
+                                <img src="images/6.png" alt="No.6">
+                                <span class="illust-label">No.6</span>
+                            </div>
+                            <span class="illust-arrow">→</span>
+                            <div class="illust-item" style="text-align:center;">
+                                <span style="color: var(--color-primary-light); font-weight: 800; font-size: 1.1rem;">No.10の勝ち！</span>
+                            </div>
+                        </div>
+
+                        <strong>② さいごの1人になったとき</strong><br>
+                        → ほかのみんなが脱落して、<strong>1人だけ残ったらその人の勝ち！</strong><br><br>
+                        <strong>③ 全員同時に脱落したとき</strong><br>
+                        → みんないっしょにやられちゃったら<strong>引き分け</strong>だよ。
+                    </div>
+                </div>
+
+                <!-- 大事なルール -->
+                <div class="rule-box">
+                    <div class="rule-box-header">
+                        <div class="rule-step-num" style="background: linear-gradient(135deg, #c44, #f66);">!</div>
+                        <h3>大事なルールまとめ</h3>
+                    </div>
+                    <div class="rule-box-body">
+                        <div class="rule-illust">
+                            <div class="illust-item">
+                                <img src="images/10.png" alt="ククノチ">
+                                <span class="illust-label">出せない！</span>
+                            </div>
+                            <div class="illust-item">
+                                <img src="images/3.png" alt="偵察隊">
+                                <span class="illust-label">見てもナイショ！</span>
+                            </div>
+                            <div class="illust-item">
+                                <img src="images/9.png" alt="刀の少女">
+                                <span class="illust-label">ククノチの天敵！</span>
+                            </div>
+                        </div>
+
+                        <strong>・ ククノチ（No.10）は自分から出せない</strong><br>
+                        → 相手の効果でしかすてられないよ。手札に持っておくカードだよ。<br><br>
+                        <strong>・ 相手の効果ですてさせられたカードの効果は発動しない</strong><br>
+                        → 自分のターンに自分で出したときだけ、効果がつかえるよ。<br><br>
+                        <strong>・ 偵察隊で見たカードの情報は、ほかの人に教えちゃダメ！</strong><br>
+                        → こっそり自分だけの情報として使おうね。
+                    </div>
+                </div>
+            </section>
+
+
+            <hr class="kids-divider">
+
+
+            <!-- ============================================ -->
+            <!--  カード説明セクション                          -->
+            <!-- ============================================ -->
+            <section id="cards">
+                <div class="kids-section-title">
+                    <h2>カードのせつめい</h2>
+                    <p>11しゅるいのカードを、ぜんぶしょうかいするよ！</p>
+                </div>
+
+                <!-- No.0 幼きククノチ -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/11.png" alt="幼きククノチ" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>幼きククノチ（おさなきククノチ）</h3>
+                                <span class="card-explain-number">No.0</span>
+                                <span class="card-count">1枚（再生札）</span>
+                            </div>
+                            <div class="card-explain-effect">効果：光合成（こうごうせい）</div>
+                            <div class="card-explain-text">
+                                ふだんは効果（こうか）がない特別（とくべつ）なカードだよ。<br><br>
+                                <strong>ククノチ（No.10）が復活するときだけ手札にくわわる</strong>「再生札」なんだ。<br>
+                                ゲームのはじめに山札のよこに置いておくよ。<br><br>
+                                山札がなくなったとき、さいごに数字くらべをするけど、<strong>精霊（No.8）にだけ勝てる</strong>という特別なルールがあるよ。
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">ポイント</span>ククノチの復活トークン。ゲーム中に山札からは引けないカードだよ。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.1 少年 -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/1.png" alt="少年" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>少年（しょうねん）</h3>
+                                <span class="card-explain-number">No.1</span>
+                                <span class="card-count">2枚</span>
+                            </div>
+                            <div class="card-explain-effect">効果：変革（へんかく）</div>
+                            <div class="card-explain-text">
+                                <strong>1枚目をつかったとき：</strong>何も起きないよ。<br><br>
+                                <strong>2枚目が場（ば）に出たとき：</strong>刀の少女（No.9）とおなじ効果がつかえるようになる！<br>
+                                つまり、相手に1枚ひかせて2枚をオープンにし、1枚えらんですてさせられるんだ。<br><br>
+                                数字はいちばんちいさいけど、2枚そろうとすごくつよくなるカードだよ！
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">ポイント</span>数字は1で弱いけど、2枚目が出ると大化けする！ おそくに花さくタイプだよ。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.2 訓練生 -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/2.png" alt="訓練生" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>訓練生（くんれんせい）</h3>
+                                <span class="card-explain-number">No.2</span>
+                                <span class="card-count">2枚</span>
+                            </div>
+                            <div class="card-explain-effect">効果：特攻（とっこう）</div>
+                            <div class="card-explain-text">
+                                相手をひとり選んで、<strong>「きみの手札は○○だ！」とカード名をあてる</strong>よ。<br><br>
+                                <strong>当たったら相手は脱落</strong>（ゲームオーバー）！<br>
+                                <strong>はずれたら何も起きない</strong>よ。<br><br>
+                                ギャンブルみたいなカードだけど、偵察隊で見た情報があれば当てやすくなるよ！
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">ポイント</span>偵察隊（No.3）で相手の手札を見たあとに使うと最強コンボになるよ！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.3 偵察隊 -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/3.png" alt="偵察隊" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>偵察隊（ていさつたい）</h3>
+                                <span class="card-explain-number">No.3</span>
+                                <span class="card-count">2枚</span>
+                            </div>
+                            <div class="card-explain-effect">効果：偵察（ていさつ）</div>
+                            <div class="card-explain-text">
+                                相手をひとり選んで、<strong>その人の手札をこっそり見る</strong>ことができるよ。<br><br>
+                                ただし！ <strong>見た内容をほかの人に教えてはダメ</strong>というルールがあるんだ。<br>
+                                自分だけが知っている情報をうまくつかって、次のターンに有利にしよう！
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">ポイント</span>相手のカードがわかれば、つぎに何をすればいいか考えやすくなるよ！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.4 戦士 -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/4.png" alt="戦士" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>戦士（せんし）</h3>
+                                <span class="card-explain-number">No.4</span>
+                                <span class="card-count">2枚</span>
+                            </div>
+                            <div class="card-explain-effect">効果：格闘（かくとう）</div>
+                            <div class="card-explain-text">
+                                相手をひとり選んで、<strong>山札から1枚ひかせる</strong>よ。<br>
+                                そのあと、相手の手札は見れないまま、<strong>「この番号をすてろ！」と1枚指定してすてさせる</strong>ことができるんだ。<br><br>
+                                相手の手札が見えないから、カンやよみあいが大事になるよ！
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">ポイント</span>相手の持っていそうなカードを予想してすてさせよう！ 当たれば大ダメージ。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.5 蔵人 -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/5.png" alt="蔵人" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>蔵人（くらびと）</h3>
+                                <span class="card-explain-number">No.5</span>
+                                <span class="card-count">1枚</span>
+                            </div>
+                            <div class="card-explain-effect">効果：醸造（じょうぞう）</div>
+                            <div class="card-explain-text">
+                                相手をひとり選んで、<strong>おたがいの手札を見せあう</strong>よ。<br>
+                                そして、<strong>数字がちいさいほうが脱落</strong>（ゲームオーバー）！<br>
+                                もし同じ数字だったら、<strong>ふたりとも脱落</strong>しちゃうよ。<br><br>
+                                一騎打ち（いっきうち）のカードだから、自分の手札がつよいときに使うとかてるよ！
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">ポイント</span>自分の手札がつよい（数字が大きい）ときに使おう。よわいと自分がやられちゃうよ！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.6 枡職人 -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/6.png" alt="枡職人" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>枡職人（ますしょくにん）</h3>
+                                <span class="card-explain-number">No.6</span>
+                                <span class="card-count">2枚</span>
+                            </div>
+                            <div class="card-explain-effect">効果：製造／守護（せいぞう／しゅご）</div>
+                            <div class="card-explain-text">
+                                <strong>1枚目をつかったとき：</strong>とくに何も起きないよ。<br><br>
+                                <strong>2枚目をつかったとき：</strong>「FOMUS（フォムス）」ととなえると、<strong>守護枡（しゅごます）を召喚（しょうかん）</strong>！<br>
+                                <strong>1回だけ脱落をふせげる</strong>バリアをはれるんだ。やられそうになっても1回だけセーフ！
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">ポイント</span>2枚目を使えれば1回だけやられない！ ピンチのときの保険（ほけん）だよ。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.7 農家 -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/7.png" alt="農家" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>農家（のうか）</h3>
+                                <span class="card-explain-number">No.7</span>
+                                <span class="card-count">2枚</span>
+                            </div>
+                            <div class="card-explain-effect">効果：栽培／収穫（さいばい／しゅうかく）</div>
+                            <div class="card-explain-text">
+                                山札からひくカードを<strong>えらべるようになる</strong>カードだよ！<br><br>
+                                <strong>1枚目をつかったとき：</strong>次の自分のターンで山札から2枚見て、好きなほうを1枚えらべるよ。<br>
+                                <strong>2枚目をつかったとき：</strong>3枚のなかから1枚えらべる！ のこりは山札にもどすよ。
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">ポイント</span>ほしいカードを手に入れやすくなるよ。つよいカードをねらおう！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.8 精霊 -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/8.png" alt="精霊" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>精霊（せいれい）</h3>
+                                <span class="card-explain-number">No.8</span>
+                                <span class="card-count">2枚</span>
+                            </div>
+                            <div class="card-explain-effect">効果：思念（しねん）</div>
+                            <div class="card-explain-text">
+                                相手をひとり選んで、<strong>おたがいの手札をそっくりそのまま交換（こうかん）</strong>するよ。<br><br>
+                                自分の手札がよわいときに、相手のつよいカードをもらえるかも？ 逆に、相手によわいカードを渡すこともできるよ。
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">ポイント</span>手札がよわいときに使うと大逆転のチャンスがあるよ！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.9 刀の少女 -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/9.png" alt="刀の少女" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>刀の少女</h3>
+                                <span class="card-explain-number">No.9</span>
+                                <span class="card-count">1枚</span>
+                            </div>
+                            <div class="card-explain-effect">効果：一閃（いっせん）</div>
+                            <div class="card-explain-text">
+                                相手をひとり選んで、<strong>山札（やまふだ）から1枚ひかせて、手札2枚をオープン</strong>にさせるよ。<br>
+                                そのなかから<strong>1枚えらんですてさせる</strong>ことができる！<br><br>
+                                <strong>ククノチ（No.10）をたおせるゆいいつのカード</strong>だよ。ククノチを持っている人にとって、いちばんこわい存在！
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">ポイント</span>ククノチを確実にたおせるのはこのカードだけ！ 大事につかおう。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.10 ククノチ -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/10.png" alt="ククノチ" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>ククノチ</h3>
+                                <span class="card-explain-number">No.10</span>
+                                <span class="card-count">1枚</span>
+                            </div>
+                            <div class="card-explain-effect">効果：再生（さいせい）</div>
+                            <div class="card-explain-text">
+                                <strong>このゲームでいちばんつよいカード</strong>（ラスボス！）だよ。<br><br>
+                                じぶんのターンに出すことはできないけれど、<strong>手札（てふだ）にのこっていれば数字が大きいからとても有利</strong>だよ。<br><br>
+                                もし相手のカードの効果（こうか）ですてさせられたら脱落（だつらく＝ゲームオーバー）になるよ。<br>
+                                ただし、<strong>「刀の少女」以外のカード</strong>に倒されたときだけ特別！ 手札をぜんぶすてて「再生札（さいせいふだ）＝幼きククノチ」をひいて復活（ふっかつ）できるんだ。
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">ポイント</span>手札にずっと持っていたいカード。最後まで残ればとても強いよ！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- 下部CTA -->
+            <div class="kids-page-cta">
+                <p>ルールとカードをおぼえたら、じっさいにあそんでみよう！</p>
+                <a href="index.html#buy" class="btn btn-primary">
+                    <span class="btn-text">SILVAを買う</span>
+                </a>
+                <a href="index.html" class="btn btn-secondary btn-outline">
+                    <span class="btn-text">トップにもどる</span>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="copyright">
+                        <p>&copy; 2025 FOMUS. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- チャットボット -->
+    <div id="chatbot">
+        <button id="chatToggle" aria-label="ルールについて質問する">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span class="chat-toggle-label">ルール質問</span>
+        </button>
+        <div id="chatWindow" class="chat-hidden">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <span class="chat-avatar">🌿</span>
+                    <div>
+                        <div class="chat-header-title">SILVAルール案内</div>
+                        <div class="chat-header-sub">なんでも聞いてね！</div>
+                    </div>
+                </div>
+                <button id="chatClose" aria-label="閉じる">×</button>
+            </div>
+            <div id="chatMessages" class="chat-messages">
+                <div class="chat-msg bot">
+                    <div class="chat-bubble">こんにちは！ SILVAのルールやカードについて、なんでも聞いてね。<br><br>たとえば「ククノチってなに？」「準備のしかた」「勝ち方」など、気になることを入力してみよう！</div>
+                </div>
+            </div>
+            <div class="chat-quick">
+                <button class="chat-quick-btn" data-q="準備のしかた">準備のしかた</button>
+                <button class="chat-quick-btn" data-q="ターンの流れ">ターンの流れ</button>
+                <button class="chat-quick-btn" data-q="勝ち方">勝ち方</button>
+                <button class="chat-quick-btn" data-q="ククノチ">ククノチ</button>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="しつもんを入力…" autocomplete="off">
+                <button id="chatSend" aria-label="送信">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* チャットボット */
+        #chatbot { position: fixed; bottom: 24px; right: 24px; z-index: 9999; }
+        @media (max-width: 640px) { #chatbot { bottom: 16px; right: 16px; } }
+
+        #chatToggle {
+            display: flex; align-items: center; gap: 8px;
+            background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+            color: #fff; border: none; border-radius: 50px;
+            padding: 14px 22px; cursor: pointer;
+            font-size: 0.95rem; font-weight: 700;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        #chatToggle:hover { transform: scale(1.05); box-shadow: 0 6px 28px rgba(0,0,0,0.5); }
+        .chat-toggle-label { white-space: nowrap; }
+        @media (max-width: 480px) {
+            #chatToggle { padding: 14px; border-radius: 50%; }
+            .chat-toggle-label { display: none; }
+        }
+
+        #chatWindow {
+            position: absolute; bottom: 70px; right: 0;
+            width: 370px; max-height: 520px;
+            background: #0c1a10;
+            border: 1px solid rgba(var(--color-primary-rgb), 0.3);
+            border-radius: 16px;
+            display: flex; flex-direction: column;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+            overflow: hidden;
+            transition: opacity 0.25s, transform 0.25s;
+        }
+        @media (max-width: 480px) {
+            #chatWindow {
+                width: calc(100vw - 32px); right: -8px;
+                max-height: 70vh;
+            }
+        }
+        #chatWindow.chat-hidden {
+            opacity: 0; transform: translateY(16px) scale(0.95);
+            pointer-events: none;
+        }
+        #chatWindow:not(.chat-hidden) {
+            opacity: 1; transform: translateY(0) scale(1);
+        }
+
+        .chat-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 16px;
+            background: rgba(var(--color-primary-rgb), 0.12);
+            border-bottom: 1px solid rgba(var(--color-primary-rgb), 0.15);
+        }
+        .chat-header-info { display: flex; align-items: center; gap: 10px; }
+        .chat-avatar { font-size: 1.5rem; }
+        .chat-header-title { color: #fff; font-weight: 700; font-size: 0.95rem; }
+        .chat-header-sub { color: var(--color-text-muted); font-size: 0.75rem; }
+        #chatClose {
+            background: none; border: none; color: var(--color-text-muted);
+            font-size: 1.5rem; cursor: pointer; padding: 4px 8px; line-height: 1;
+        }
+        #chatClose:hover { color: #fff; }
+
+        .chat-messages {
+            flex: 1; overflow-y: auto; padding: 16px;
+            display: flex; flex-direction: column; gap: 12px;
+            min-height: 200px; max-height: 300px;
+        }
+        .chat-msg { display: flex; }
+        .chat-msg.bot { justify-content: flex-start; }
+        .chat-msg.user { justify-content: flex-end; }
+        .chat-bubble {
+            max-width: 85%; padding: 10px 14px;
+            border-radius: 14px;
+            font-size: 0.9rem; line-height: 1.7;
+        }
+        .chat-msg.bot .chat-bubble {
+            background: rgba(var(--color-primary-rgb), 0.12);
+            color: var(--color-text-secondary);
+            border-bottom-left-radius: 4px;
+        }
+        .chat-msg.user .chat-bubble {
+            background: var(--color-primary-dark);
+            color: #fff;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-quick {
+            display: flex; gap: 6px; padding: 6px 16px 10px;
+            flex-wrap: wrap;
+        }
+        .chat-quick-btn {
+            background: rgba(var(--color-primary-rgb), 0.1);
+            border: 1px solid rgba(var(--color-primary-rgb), 0.25);
+            color: var(--color-primary-light);
+            padding: 5px 12px; border-radius: 20px;
+            font-size: 0.78rem; font-weight: 600;
+            cursor: pointer; transition: background 0.2s;
+        }
+        .chat-quick-btn:hover { background: rgba(var(--color-primary-rgb), 0.22); }
+
+        .chat-input-area {
+            display: flex; gap: 8px; padding: 12px 14px;
+            border-top: 1px solid rgba(var(--color-primary-rgb), 0.12);
+            background: rgba(0,0,0,0.2);
+        }
+        #chatInput {
+            flex: 1; background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+            border-radius: 10px; padding: 10px 14px;
+            color: #fff; font-size: 0.9rem; outline: none;
+            font-family: inherit;
+        }
+        #chatInput::placeholder { color: rgba(255,255,255,0.3); }
+        #chatInput:focus { border-color: var(--color-primary); }
+        #chatSend {
+            background: var(--color-primary); border: none;
+            border-radius: 10px; padding: 8px 12px;
+            color: #fff; cursor: pointer;
+            display: flex; align-items: center;
+            transition: background 0.2s;
+        }
+        #chatSend:hover { background: var(--color-primary-light); }
+    </style>
+
+    <!-- ページ内スムーススクロール + チャットボットJS -->
+    <script>
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    var headerH = document.querySelector('.simple-header').offsetHeight;
+                    window.scrollTo({ top: target.offsetTop - headerH - 16, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // =============================================
+        // SILVA ルール FAQ チャットボット
+        // =============================================
+        (function() {
+            var KB = [
+                // ゲーム概要
+                { keys: ['なに','どんなゲーム','しるば','silva','概要','説明','どういう'],
+                  answer: 'SILVAは2〜4人であそべる心理戦カードゲームだよ！ カードは全部で11しゅるい18まい。相手のカードを予想して、たおしたり守ったりしながら最後まで生きのこった人が勝ち！ 1回のゲームは2〜10分くらいで終わるよ。' },
+                { keys: ['何人','なんにん','人数','にんずう','プレイヤー'],
+                  answer: '2〜4人であそべるよ！ 友だちやかぞくと楽しんでね。' },
+                { keys: ['時間','じかん','どのくらい','何分','なんぷん'],
+                  answer: '1回のゲームは2〜10分くらいで終わるよ。サクッとあそべるのがSILVAのいいところ！' },
+                { keys: ['何枚','なんまい','枚数','まいすう','カード数'],
+                  answer: 'ゲームカード18まい＋ルールカード2まいで、ぜんぶで20まい入っているよ。ゲームカードは11しゅるいだよ。' },
+
+                // セットアップ
+                { keys: ['準備','じゅんび','セットアップ','始め方','はじめかた','最初','さいしょ','並べ方','ならべかた'],
+                  answer: '① 「幼きククノチ（No.0）」をぬいて、のこり17まいをよくまぜて裏向きにかさねて「山札」にするよ。\n② 幼きククノチは山札のよこに横向きで置いてね。これが「再生札」だよ。\n③ ひとりずつ山札から1まいとって手札にするよ。\n④ じゃんけんなどで先手を決めて、時計まわりにすすめよう！' },
+                { keys: ['山札','やまふだ','やまふだ'],
+                  answer: '山札は、幼きククノチ以外の17まいをよくまぜて裏向きにかさねたものだよ。自分のターンのはじめに、ここから1まいひくよ。' },
+                { keys: ['手札','てふだ'],
+                  answer: '手札は自分だけが見えるカードのこと。ゲーム中は手札が1まいで、ターンのはじめに山札から1まいひいて2まいにして、そのうち1まいを出すよ。' },
+                { keys: ['再生札','さいせいふだ'],
+                  answer: '再生札は「幼きククノチ（No.0）」のこと。ゲームのはじめに山札のよこに横向きで置いておくよ。ククノチ（No.10）が復活するときだけ手札にくわわる特別なカードだよ。' },
+
+                // ターンの流れ
+                { keys: ['ターン','たーん','流れ','ながれ','手番','てばん','やること','進め方','すすめかた','じゅんばん'],
+                  answer: '自分のターンでやることは4つ！\n① 山札から1まいひく（手札が2まいになる）\n② 2まいから1まいえらんで表向きに出す\n③ 出したカードの効果をかならず使う\n④ 使ったカードは自分の前にならべる（すて札）\nこれで次の人のターンになるよ！' },
+
+                // 脱落
+                { keys: ['脱落','だつらく','ゲームオーバー','やられ','負け','まけ','たおされ','アウト'],
+                  answer: 'カードの効果でやられてしまったら「脱落」＝ゲームオーバーだよ。脱落したら手札をみんなに見せてすて札のところに置くよ。あとはみんなのゲームを見ていてね！' },
+
+                // 勝利条件
+                { keys: ['勝ち','かち','勝つ','勝利','しょうり','勝ちかた','勝ち方','終わり','おわり','終了'],
+                  answer: 'ゲームが終わるのは3つのパターンがあるよ！\n① 山札がぜんぶなくなったとき → 手札を見せあって数字がいちばん大きい人の勝ち！\n② さいごの1人になったとき → その人の勝ち！\n③ ぜんいん同時に脱落 → 引き分けだよ。' },
+                { keys: ['引き分け','ひきわけ','ドロー'],
+                  answer: '引き分けになるのは2つのパターンがあるよ。① 山札がなくなって数字くらべをしたとき同じ数字だった場合。② ぜんいんが同時に脱落した場合。' },
+
+                // 大事なルール
+                { keys: ['出せない','だせない','場に出','ばにだ'],
+                  answer: 'ククノチ（No.10）は自分のターンに出すことができないよ。手札に持っておくカードなんだ。相手の効果でしかすてさせられないよ。' },
+                { keys: ['効果 発動','こうか はつどう','捨てさせ','すてさせ','無効','むこう'],
+                  answer: '大事なルール！ 相手の効果でムリヤリすてさせられたカードの効果ははつどうしないよ。効果が使えるのは、自分のターンに自分で出したときだけ！' },
+                { keys: ['ないしょ','ナイショ','秘密','ひみつ','教え','おしえ','言えない','いえない'],
+                  answer: '偵察隊（No.3）で相手の手札を見たとき、その情報はほかの人に教えちゃダメ！ こっそり自分だけの情報としてつかおうね。' },
+
+                // カード: ククノチ
+                { keys: ['ククノチ','くくのち','No.10','10番','再生'],
+                  answer: '【ククノチ（No.10）】いちばんつよいカード！ 自分からは出せないけど、手札に残ればとても有利。刀の少女以外に倒されたら「再生札」をひいて復活できるよ！ ただし刀の少女にたおされると復活できないよ。' },
+                // カード: 刀の少女
+                { keys: ['刀の少女','かたなのしょうじょ','No.9','9番','一閃','いっせん'],
+                  answer: '【刀の少女（No.9）】相手に1枚ひかせて手札2枚をオープン→1枚えらんですてさせるよ。ククノチ（No.10）をたおせるゆいいつのカード！ ククノチの復活をふせげるよ。' },
+                // カード: 精霊
+                { keys: ['精霊','せいれい','No.8','8番','思念','しねん','交換','こうかん'],
+                  answer: '【精霊（No.8）】相手をひとりえらんで、おたがいの手札をそっくり交換するよ。手札がよわいときに使うと大逆転のチャンスがあるよ！' },
+                // カード: 農家
+                { keys: ['農家','のうか','No.7','7番','栽培','さいばい','収穫','しゅうかく'],
+                  answer: '【農家（No.7）】1枚目：次のターンで山札から2枚見て1枚えらべる。2枚目：3枚から1枚えらべる！ ほしいカードを手に入れやすくなるカードだよ。' },
+                // カード: 枡職人
+                { keys: ['枡職人','ますしょくにん','No.6','6番','守護','しゅご','製造','せいぞう','FOMUS','フォムス','バリア'],
+                  answer: '【枡職人（No.6）】1枚目：効果なし。2枚目：「FOMUS」ととなえると守護枡を召喚！ 1回だけ脱落をふせげるバリアをはれるよ。ピンチのときの保険だね！' },
+                // カード: 蔵人
+                { keys: ['蔵人','くらびと','No.5','5番','醸造','じょうぞう','見せ合','みせあ'],
+                  answer: '【蔵人（No.5）】相手とおたがいの手札を見せあって、数字がちいさいほうが脱落！ 同じ数字ならふたりとも脱落。自分の手札がつよいときに使おう！' },
+                // カード: 戦士
+                { keys: ['戦士','せんし','No.4','4番','格闘','かくとう'],
+                  answer: '【戦士（No.4）】相手に山札から1枚ひかせて、手札を見ないまま1枚指定してすてさせるよ。カンやよみあいが大事！ 偵察隊とのコンボがつよいよ。' },
+                // カード: 偵察隊
+                { keys: ['偵察隊','ていさつたい','偵察','ていさつ','No.3','3番','のぞ','見る'],
+                  answer: '【偵察隊（No.3）】相手の手札をこっそり見ることができるよ。ただし見た内容をほかの人に教えてはダメ！ つぎのターンに活かそう。' },
+                // カード: 訓練生
+                { keys: ['訓練生','くんれんせい','No.2','2番','特攻','とっこう','言い当て','いいあて','あてる'],
+                  answer: '【訓練生（No.2）】相手の手札のカード名をあてるよ。当たったら相手は脱落！ はずれたら何も起きない。偵察隊で見たあとに使うと最強コンボだよ！' },
+                // カード: 少年
+                { keys: ['少年','しょうねん','No.1','1番','変革','へんかく'],
+                  answer: '【少年（No.1）】1枚目：効果なし。2枚目が場に出ると刀の少女とおなじ効果が使える！ 数字はいちばん小さいけど、2枚そろうとすごくつよくなるよ。' },
+                // カード: 幼きククノチ
+                { keys: ['幼きククノチ','おさなきククノチ','No.0','0番','光合成','こうごうせい','復活'],
+                  answer: '【幼きククノチ（No.0）】ふだんは効果なしの特別なカード。ゲームのはじめに山札のよこに置く「再生札」だよ。ククノチが復活するときだけ手札にくわわるよ。数字くらべでは精霊（No.8）にだけ勝てるよ。' },
+
+                // コンボ・戦略
+                { keys: ['コンボ','こんぼ','組み合わせ','くみあわせ','さいきょう','最強','つよい'],
+                  answer: '最強コンボは「偵察隊→訓練生」！ 偵察隊で相手の手札を見て、そのあと訓練生で言い当てれば確実に脱落させられるよ。あと少年の2枚コンボもつよい！' },
+
+                // すて札
+                { keys: ['すて札','捨て札','すてふだ'],
+                  answer: '使ったカードは自分の前に左から右にならべていくよ。これが「すて札」だよ。みんなのすて札を見れば、どのカードが使われたかわかるよ！' },
+
+                // --- 細かいルール・エッジケース ---
+
+                // 蔵人の同値
+                { keys: ['蔵人 同じ','くらびと 同じ','同じ数字 蔵人','同値','どうち','蔵人 引き分け'],
+                  answer: '蔵人（No.5）で手札を見せあって同じ数字だったら、ふたりとも脱落するよ。引き分けじゃなくて、両方アウトだから気をつけてね！' },
+
+                // ククノチ復活の詳細
+                { keys: ['ククノチ 復活','くくのち ふっかつ','再生 どうなる','復活 手札','再生 流れ'],
+                  answer: 'ククノチが「刀の少女以外」でたおされたときの流れ：\n① 手札をぜんぶすてる\n② 山札よこにある再生札（幼きククノチ）を手札にくわえる\n③ ゲームに復帰！ 次のターンからふつうにあそべるよ。\nただし刀の少女にたおされたら復活できないよ！' },
+
+                // ククノチを自分から出せない
+                { keys: ['ククノチ 出す','くくのち だ','10 出せ','ククノチ 使え'],
+                  answer: 'ククノチ（No.10）は自分のターンに出すことはできないよ。手札にずっと持っておくカードなんだ。もし手札が2枚ともククノチ…ということはないけど、ククノチしか残ってないときは出せないから気をつけてね。' },
+
+                // 戦士で指定が外れた場合
+                { keys: ['戦士 外れ','せんし はずれ','戦士 持ってない','格闘 はずれ','戦士 ない'],
+                  answer: '戦士（No.4）で指定したカードを相手が持っていなかったら、何も起きないよ。はずれてもペナルティはないから、思いきって予想してみよう！' },
+
+                // 戦士で引かせたカードを指定
+                { keys: ['戦士 引かせ','せんし ひかせ','戦士 2枚'],
+                  answer: '戦士は相手にまず山札から1枚ひかせるよ。相手の手札が2枚になったあとで、1枚を指定してすてさせるんだ。引かせたカードも指定の対象になるよ！' },
+
+                // 訓練生で外した場合
+                { keys: ['訓練生 外','くんれんせい はず','訓練生 まちがえ','特攻 はずれ','訓練生 失敗'],
+                  answer: '訓練生（No.2）で予想がはずれても何も起きないよ。ペナルティなし！ だからダメもとでチャレンジしてもOKだよ。' },
+
+                // 農家で見たカードの扱い
+                { keys: ['農家 見','のうか み','農家 残り','栽培 見','収穫 見','農家 山札 戻'],
+                  answer: '農家の効果で山札の上から数枚を見て、1枚えらんで残りは山札にもどすよ。見たカードの内容はほかの人に見せなくて大丈夫。自分だけのヒミツだよ！' },
+
+                // 守護枡の詳細
+                { keys: ['守護枡 いつ','しゅごます いつ','バリア いつ','守護 消え','守護 何回','守護枡 効果','守護 脱落'],
+                  answer: '守護枡のバリアは1回だけ脱落をふせげるよ。たとえば蔵人で数字くらべに負けても、守護枡があれば脱落しない！ でも使ったら消えちゃうから、2回目はふせげないよ。' },
+
+                // 少年2枚目の発動タイミング
+                { keys: ['少年 2枚目','しょうねん 2まいめ','少年 いつ','変革 発動','少年 タイミング','少年 効果 いつ'],
+                  answer: '少年の2枚目の効果は、場に2枚目の少年が出たときにすぐ発動するよ。1枚目が誰かのすて札にあって、2枚目を自分で出したとき、刀の少女とおなじ効果（相手に1枚ひかせて2枚公開→1枚すてさせる）が使えるんだ！' },
+
+                // 精霊で交換したくない
+                { keys: ['精霊 交換 したくない','せいれい こうかん いや','精霊 拒否','交換 断'],
+                  answer: '精霊の交換はことわれないよ！ 精霊を出した人が相手をえらんだら、かならず手札を交換しないといけないんだ。' },
+
+                // 精霊で自分が不利になるケース
+                { keys: ['精霊 つよいカード 渡','精霊 不利','精霊 リスク','精霊 デメリット'],
+                  answer: '精霊で交換すると、自分のつよいカードを相手にわたしちゃうこともあるよ。使うかどうかはよく考えよう！ 自分の手札がよわいときに使うのがコツだよ。' },
+
+                // 刀の少女で2枚見てから選ぶ
+                { keys: ['刀の少女 えらぶ','刀の少女 選','一閃 どっち','刀の少女 2枚 見','刀の少女 公開'],
+                  answer: '刀の少女の効果で相手に1枚ひかせたら、手札2枚をぜんぶオープン（表向き）にするよ。2枚とも見たうえで、すてさせたい1枚をえらべるんだ。すごくつよい効果だよ！' },
+
+                // 山札がなくなったときの処理
+                { keys: ['山札 なくなっ','やまふだ なくなっ','山札 切れ','やまふだ き','カード なくなっ','山札 0'],
+                  answer: '山札がぜんぶなくなったら、そのラウンドのターンが終わったあとにゲーム終了！ 生きのこっているプレイヤーは手札を見せあって、数字がいちばん大きい人の勝ちだよ。同じ数字なら引き分け。' },
+
+                // 幼きククノチ vs 精霊
+                { keys: ['幼きククノチ 精霊','おさなき 精霊','0 8','No.0 精霊','幼き 勝'],
+                  answer: '山札がなくなって数字くらべをするとき、幼きククノチ（No.0）は精霊（No.8）にだけ勝てるよ！ ふつうは数字が大きいほうが勝つけど、これだけ特別なルールなんだ。' },
+
+                // 複数人脱落
+                { keys: ['同時 脱落','いっしょ 脱落','2人 脱落','ふたり 脱落','全員 脱落','ぜんいん 脱落'],
+                  answer: '蔵人の同値で2人同時に脱落したり、ぜんいんが同時に脱落することもあるよ。ぜんいん同時脱落なら引き分け。2人脱落してもまだほかに生きのこりがいたら、そのままゲームはつづくよ！' },
+
+                // 時計回り
+                { keys: ['時計回り','とけいまわり','順番','じゅんばん','誰から','だれから','先手','せんて'],
+                  answer: '最初の先手はじゃんけんなどで決めてね。そのあとは時計回り（左どなり）にじゅんばんがまわるよ。脱落した人はとばして次の人にいくよ。' },
+
+                // カード枚数の詳細
+                { keys: ['枚数 詳','まいすう くわ','何枚ずつ','なんまいずつ','カード 内訳','ないわけ'],
+                  answer: 'カードの内訳はこうだよ：\nNo.10 ククノチ：1枚\nNo.9 刀の少女：1枚\nNo.8 精霊：2枚\nNo.7 農家：2枚\nNo.6 枡職人：2枚\nNo.5 蔵人：1枚\nNo.4 戦士：2枚\nNo.3 偵察隊：2枚\nNo.2 訓練生：2枚\nNo.1 少年：2枚\nNo.0 幼きククノチ：1枚（再生札）\nぜんぶで18枚だよ！' },
+
+                // 購入
+                { keys: ['買','か','購入','こうにゅう','値段','ねだん','いくら','価格','かかく','どこで'],
+                  answer: 'SILVAはフィジカルゲーム（カードだけ）が1,500円、枡セット（ミニ枡つき）が2,500円だよ。くわしくはトップページの「購入」セクションを見てね！' },
+            ];
+
+            var chatToggle = document.getElementById('chatToggle');
+            var chatWindow = document.getElementById('chatWindow');
+            var chatClose = document.getElementById('chatClose');
+            var chatInput = document.getElementById('chatInput');
+            var chatSend = document.getElementById('chatSend');
+            var chatMessages = document.getElementById('chatMessages');
+
+            chatToggle.addEventListener('click', function() {
+                chatWindow.classList.toggle('chat-hidden');
+                if (!chatWindow.classList.contains('chat-hidden')) {
+                    chatInput.focus();
+                }
+            });
+            chatClose.addEventListener('click', function() {
+                chatWindow.classList.add('chat-hidden');
+            });
+
+            document.querySelectorAll('.chat-quick-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    handleQuestion(this.dataset.q);
+                });
+            });
+
+            chatSend.addEventListener('click', function() {
+                var q = chatInput.value.trim();
+                if (q) handleQuestion(q);
+            });
+            chatInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    var q = chatInput.value.trim();
+                    if (q) handleQuestion(q);
+                }
+            });
+
+            function handleQuestion(q) {
+                addMessage(q, 'user');
+                chatInput.value = '';
+                // 少し待ってから回答（自然な感じ）
+                setTimeout(function() {
+                    var answer = findAnswer(q);
+                    addMessage(answer, 'bot');
+                }, 400);
+            }
+
+            function addMessage(text, type) {
+                var div = document.createElement('div');
+                div.className = 'chat-msg ' + type;
+                var bubble = document.createElement('div');
+                bubble.className = 'chat-bubble';
+                bubble.innerHTML = text.replace(/\n/g, '<br>');
+                div.appendChild(bubble);
+                chatMessages.appendChild(div);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function findAnswer(q) {
+                var input = q.toLowerCase();
+                var best = null;
+                var bestScore = 0;
+
+                for (var i = 0; i < KB.length; i++) {
+                    var score = 0;
+                    for (var j = 0; j < KB[i].keys.length; j++) {
+                        if (input.indexOf(KB[i].keys[j].toLowerCase()) !== -1) {
+                            score += KB[i].keys[j].length;
+                        }
+                    }
+                    if (score > bestScore) {
+                        bestScore = score;
+                        best = KB[i];
+                    }
+                }
+
+                if (best) return best.answer;
+                return 'ごめんね、その質問はわからなかったよ。\n「ククノチ」「準備のしかた」「ターンの流れ」「勝ち方」など、SILVAのルールやカードの名前で聞いてみてね！';
+            }
+        })();
+    </script>
+
+</body>
+</html>

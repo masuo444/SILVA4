@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Kids Page | SILVA Card Game</title>
+    <meta name="description" content="Learn how to play the SILVA card game with easy-to-understand rules and card descriptions for kids.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <style>
+        /* === Kids Page Styles === */
+        .kids-page {
+            min-height: 100vh;
+            padding-top: 100px;
+            padding-bottom: 60px;
+        }
+
+        .kids-page-header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+        .kids-page-header .kids-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 200, 60, 0.12);
+            border: 1px solid rgba(255, 200, 60, 0.3);
+            color: #ffc83c;
+            padding: 6px 18px;
+            border-radius: 24px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .kids-page-header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: var(--color-primary-light);
+            margin-bottom: 12px;
+        }
+        .kids-page-header p {
+            color: var(--color-text-secondary);
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--color-primary-light); }
+
+        /* Page Navigation */
+        .page-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+        .page-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+        .page-nav .nav-rules {
+            background: rgba(var(--color-primary-rgb), 0.12);
+            border: 1px solid rgba(var(--color-primary-rgb), 0.3);
+            color: var(--color-primary-light);
+        }
+        .page-nav .nav-rules:hover {
+            background: rgba(var(--color-primary-rgb), 0.22);
+        }
+        .page-nav .nav-cards {
+            background: rgba(100, 180, 255, 0.1);
+            border: 1px solid rgba(100, 180, 255, 0.3);
+            color: #78beff;
+        }
+        .page-nav .nav-cards:hover {
+            background: rgba(100, 180, 255, 0.2);
+        }
+
+        /* === Rules Section === */
+        .kids-section-title {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+        .kids-section-title h2 {
+            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            font-weight: 800;
+            color: var(--color-primary-light);
+            margin-bottom: 8px;
+        }
+        .kids-section-title p {
+            color: var(--color-text-secondary);
+            font-size: 1rem;
+        }
+
+        .rule-box {
+            background: var(--color-bg-card);
+            border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+            border-radius: 16px;
+            padding: 28px 24px;
+            margin-bottom: 24px;
+            transition: border-color 0.3s;
+        }
+        .rule-box:hover {
+            border-color: rgba(var(--color-primary-rgb), 0.35);
+        }
+
+        .rule-box-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+        .rule-step-num {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+        .rule-box-header h3 {
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin: 0;
+        }
+
+        .rule-box-body {
+            color: var(--color-text-secondary);
+            line-height: 2;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+        }
+        .rule-box-body strong {
+            color: var(--color-primary-light);
+            font-weight: 600;
+        }
+
+        .rule-note {
+            margin-top: 14px;
+            padding: 12px 16px;
+            background: rgba(255, 200, 60, 0.08);
+            border-radius: 10px;
+            border-left: 3px solid #ffc83c;
+        }
+        .rule-note p {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+        .rule-note .note-label {
+            color: #ffc83c;
+            font-weight: 700;
+            margin-right: 6px;
+        }
+
+        .kids-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(var(--color-primary-rgb), 0.2), transparent);
+            margin: 56px 0;
+            border: none;
+        }
+
+        /* === Card Descriptions === */
+        .card-explain {
+            background: var(--color-bg-card);
+            border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+            border-radius: 16px;
+            margin-bottom: 28px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .card-explain:hover {
+            border-color: rgba(var(--color-primary-rgb), 0.4);
+        }
+        .card-explain-inner {
+            display: flex;
+            gap: 24px;
+            padding: 24px;
+            align-items: flex-start;
+        }
+        @media (max-width: 640px) {
+            .card-explain-inner {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 16px;
+                padding: 20px 16px;
+            }
+        }
+        .card-explain-img {
+            flex-shrink: 0;
+            width: 120px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+        }
+        @media (max-width: 640px) {
+            .card-explain-img { width: 100px; }
+        }
+        .card-explain-body { flex: 1; min-width: 0; }
+        .card-explain-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+        }
+        @media (max-width: 640px) {
+            .card-explain-title { justify-content: center; }
+        }
+        .card-explain-title h3 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin: 0;
+        }
+        .card-explain-number {
+            background: rgba(var(--color-primary-rgb), 0.15);
+            color: var(--color-primary-light);
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .card-explain-effect {
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+        .card-explain-text {
+            color: var(--color-text-secondary);
+            line-height: 1.9;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+        }
+        .card-explain-text strong {
+            color: var(--color-primary-light);
+            font-weight: 600;
+        }
+        .card-explain-tip {
+            margin-top: 14px;
+            padding: 12px 16px;
+            background: rgba(var(--color-primary-rgb), 0.08);
+            border-radius: 10px;
+            border-left: 3px solid var(--color-primary);
+        }
+        .card-explain-tip p {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+        .card-explain-tip .tip-label {
+            color: var(--color-primary-light);
+            font-weight: 700;
+            margin-right: 6px;
+        }
+        .card-count {
+            display: inline-block;
+            background: rgba(255,255,255,0.06);
+            color: var(--color-text-muted);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            margin-left: 8px;
+        }
+
+        /* Rule illustrations */
+        .rule-illust {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 12px;
+            margin: 20px 0 8px;
+            flex-wrap: wrap;
+        }
+        .rule-illust img {
+            height: 90px;
+            width: auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+        }
+        @media (max-width: 640px) {
+            .rule-illust img { height: 70px; }
+        }
+        .rule-illust .illust-label {
+            display: block;
+            text-align: center;
+            color: #e0e0e0;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-top: 8px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+        }
+        .rule-illust .illust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .rule-illust .illust-arrow {
+            font-size: 2.2rem;
+            color: var(--color-primary-light);
+            align-self: center;
+            line-height: 1;
+            font-weight: 800;
+        }
+        .rule-illust .card-stack {
+            position: relative;
+            width: 68px;
+            height: 94px;
+        }
+        @media (max-width: 640px) {
+            .rule-illust .card-stack { width: 54px; height: 75px; }
+        }
+        .rule-illust .card-stack img {
+            position: absolute;
+            height: 90px;
+            border-radius: 6px;
+        }
+        @media (max-width: 640px) {
+            .rule-illust .card-stack img { height: 70px; }
+        }
+        .rule-illust .card-stack img:nth-child(1) { top: 0; left: 0; }
+        .rule-illust .card-stack img:nth-child(2) { top: 2px; left: 3px; }
+        .rule-illust .card-stack img:nth-child(3) { top: 4px; left: 6px; }
+
+        .rule-illust-wide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin: 20px 0 8px;
+            flex-wrap: wrap;
+        }
+        .rule-illust-wide img {
+            height: 80px;
+            width: auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+        }
+        @media (max-width: 640px) {
+            .rule-illust-wide img { height: 60px; }
+        }
+        .rule-illust-wide .illust-label {
+            display: block;
+            text-align: center;
+            color: #e0e0e0;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-top: 8px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+        }
+        .rule-illust-wide .vs-text {
+            color: #ffc83c;
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+        .rule-illust-wide .illust-arrow {
+            font-size: 2.2rem;
+            color: var(--color-primary-light);
+            font-weight: 800;
+        }
+
+        /* CTA */
+        .kids-page-cta {
+            text-align: center;
+            margin-top: 56px;
+            padding: 32px 20px;
+            background: rgba(var(--color-primary-rgb), 0.06);
+            border-radius: 16px;
+        }
+        .kids-page-cta p {
+            color: var(--color-text-secondary);
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        .kids-page-cta .btn { margin: 0 8px 8px; }
+
+        /* Simple Header */
+        .simple-header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(6, 13, 8, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 200, 60, 0.15);
+            padding: 16px 0;
+        }
+        .simple-header .container {
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .simple-header .brand-link {
+            text-decoration: none; display: flex; align-items: baseline; gap: 8px;
+        }
+        .simple-header .brand-text {
+            font-size: 1.4rem; font-weight: 800; color: #ffc83c;
+        }
+        .simple-header .brand-subtitle {
+            font-size: 0.7rem; color: var(--color-text-muted);
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+        .simple-header .kids-label {
+            background: rgba(255, 200, 60, 0.15);
+            color: #ffc83c;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-left: 4px;
+        }
+        .simple-header .header-nav { display: flex; gap: 16px; align-items: center; }
+        .simple-header .header-nav a {
+            color: var(--color-text-secondary); text-decoration: none;
+            font-size: 0.9rem; font-weight: 500; transition: color 0.2s;
+        }
+        .simple-header .header-nav a:hover { color: var(--color-primary-light); }
+        .simple-header .header-nav .lang-link {
+            background: rgba(100, 180, 255, 0.1);
+            border: 1px solid rgba(100, 180, 255, 0.3);
+            color: #78beff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .simple-header .header-nav .lang-link:hover {
+            background: rgba(100, 180, 255, 0.2);
+            color: #a0d0ff;
+        }
+        @media (max-width: 640px) {
+            .simple-header .header-nav { gap: 8px; flex-wrap: wrap; }
+            .simple-header .header-nav a { font-size: 0.78rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="simple-header">
+        <div class="container">
+            <a href="index.html" class="brand-link">
+                <span class="brand-text">SILVA</span>
+                <span class="brand-subtitle">CARD GAME</span>
+                <span class="kids-label">For Kids</span>
+            </a>
+            <nav class="header-nav">
+                <a href="index.html">Home</a>
+                <a href="#rules">How to Play</a>
+                <a href="#cards">Card Guide</a>
+                <a href="cards-kids.html" class="lang-link">日本語</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="kids-page">
+        <div class="container">
+
+            <a href="index.html" class="back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                Back to Home
+            </a>
+
+            <div class="kids-page-header">
+                <div class="kids-badge">Kids Page</div>
+                <h1>How to Play SILVA</h1>
+                <p>SILVA is a card game of bluffing and strategy.<br>Here we'll explain the rules and all the cards in a simple, easy-to-understand way!</p>
+            </div>
+
+            <!-- Page Navigation -->
+            <div class="page-nav">
+                <a href="#rules" class="nav-rules">How to Play / Rules</a>
+                <a href="#cards" class="nav-cards">Card Guide</a>
+            </div>
+
+
+            <!-- ============================================ -->
+            <!--  Rules / How to Play Section                  -->
+            <!-- ============================================ -->
+            <section id="rules">
+                <div class="kids-section-title">
+                    <h2>How to Play / Rules</h2>
+                    <p>Let's learn the game step by step!</p>
+                </div>
+
+                <!-- Game Overview -->
+                <div class="rule-box">
+                    <div class="rule-box-header">
+                        <div class="rule-step-num" style="background: linear-gradient(135deg, #b8860b, #ffc83c);">!</div>
+                        <h3>What is SILVA?</h3>
+                    </div>
+                    <div class="rule-box-body">
+                        <div class="rule-illust">
+                            <div class="illust-item">
+                                <img src="images/back.png" alt="SILVA Card Back">
+                                <span class="illust-label">Card Back</span>
+                            </div>
+                            <div class="illust-item">
+                                <img src="images/10.png" alt="Kukunochi">
+                                <span class="illust-label">Kukunochi</span>
+                            </div>
+                            <div class="illust-item">
+                                <img src="images/9.png" alt="Sword Maiden">
+                                <span class="illust-label">Sword Maiden</span>
+                            </div>
+                            <div class="illust-item">
+                                <img src="images/5.png" alt="Brewer">
+                                <span class="illust-label">Brewer</span>
+                            </div>
+                        </div>
+                        SILVA is a card game for <strong>2 to 4 players</strong>.<br>
+                        Each game takes only <strong>2 to 10 minutes</strong>, so it's quick and fun!<br><br>
+                        There are <strong>11 types of cards, 18 in total</strong> (+ 2 rule cards).<br>
+                        Try to guess your opponents' cards and eliminate them while protecting yourself. <strong>The last player standing wins!</strong>
+                    </div>
+                </div>
+
+                <!-- Step 1 -->
+                <div class="rule-box">
+                    <div class="rule-box-header">
+                        <div class="rule-step-num">1</div>
+                        <h3>Setting Up the Game</h3>
+                    </div>
+                    <div class="rule-box-body">
+                        <strong>1. Remove "Young Kukunochi" (No.0)</strong> from the deck. Shuffle the remaining 17 cards well and place them face-down to form the <strong>"Draw Pile"</strong>.<br><br>
+
+                        <div class="rule-illust">
+                            <div class="illust-item">
+                                <div class="card-stack">
+                                    <img src="images/back.png" alt="Draw Pile">
+                                    <img src="images/back.png" alt="Draw Pile">
+                                    <img src="images/back.png" alt="Draw Pile">
+                                </div>
+                                <span class="illust-label">Draw Pile</span>
+                            </div>
+                            <div class="illust-item">
+                                <img src="images/11.png" alt="Young Kukunochi" style="transform: rotate(90deg);">
+                                <span class="illust-label">Rebirth Card (sideways)</span>
+                            </div>
+                        </div>
+
+                        <strong>2. Place "Young Kukunochi" sideways</strong> next to the draw pile. This is the <strong>"Rebirth Card"</strong>.<br><br>
+                        <strong>3. Each player draws 1 card</strong> from the top of the draw pile. This is your hand &mdash; only you can see it!<br><br>
+
+                        <div class="rule-illust">
+                            <div class="illust-item">
+                                <div class="card-stack">
+                                    <img src="images/back.png" alt="Draw Pile">
+                                    <img src="images/back.png" alt="Draw Pile">
+                                    <img src="images/back.png" alt="Draw Pile">
+                                </div>
+                                <span class="illust-label">From the pile...</span>
+                            </div>
+                            <span class="illust-arrow">&rarr;</span>
+                            <div class="illust-item">
+                                <img src="images/back.png" alt="Hand">
+                                <span class="illust-label">Draw 1 = Your hand</span>
+                            </div>
+                        </div>
+
+                        <strong>4. Decide who goes first!</strong> Rock-paper-scissors works great. Play proceeds clockwise.
+                    </div>
+                    <div class="rule-note">
+                        <p><span class="note-label">Hint:</span> Shuffle the cards really well so the game is fair and fun!</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="rule-box">
+                    <div class="rule-box-header">
+                        <div class="rule-step-num">2</div>
+                        <h3>What You Do on Your Turn</h3>
+                    </div>
+                    <div class="rule-box-body">
+                        On your turn, do these 4 things in order:<br><br>
+
+                        <strong>1. Draw 1 card from the draw pile</strong><br>
+                        &rarr; Now you have 2 cards in your hand.<br>
+
+                        <div class="rule-illust">
+                            <div class="illust-item">
+                                <img src="images/back.png" alt="Original hand">
+                                <span class="illust-label">Your hand</span>
+                            </div>
+                            <span class="illust-arrow">+</span>
+                            <div class="illust-item">
+                                <img src="images/back.png" alt="Draw from pile">
+                                <span class="illust-label">Draw from pile</span>
+                            </div>
+                            <span class="illust-arrow">&rarr;</span>
+                            <div class="illust-item">
+                                <img src="images/back.png" alt="Hand A">
+                            </div>
+                            <div class="illust-item">
+                                <img src="images/back.png" alt="Hand B">
+                                <span class="illust-label">Now you have 2!</span>
+                            </div>
+                        </div>
+
+                        <strong>2. Choose 1 card to play face-up</strong><br>
+                        &rarr; Show the card to everyone.<br>
+
+                        <div class="rule-illust">
+                            <div class="illust-item">
+                                <img src="images/back.png" alt="Hand">
+                                <span class="illust-label">Keep (hand)</span>
+                            </div>
+                            <div class="illust-item">
+                                <img src="images/3.png" alt="Play card">
+                                <span class="illust-label">Play! (face-up)</span>
+                            </div>
+                        </div>
+
+                        <strong>3. You MUST use the card's ability</strong><br>
+                        &rarr; Every card has a special power. We'll explain them later!<br><br>
+                        <strong>4. Place the used card in your discard area</strong><br>
+                        &rarr; Line them up from left to right.
+                    </div>
+                    <div class="rule-note">
+                        <p><span class="note-label">Important!</span> You MUST use the card's ability when you play it. You can't say "never mind"!</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="rule-box">
+                    <div class="rule-box-header">
+                        <div class="rule-step-num">3</div>
+                        <h3>What is "Elimination"?</h3>
+                    </div>
+                    <div class="rule-box-body">
+                        If you're knocked out by a card's ability, you're <strong>"Eliminated" = Game Over</strong> for you!<br><br>
+
+                        <div class="rule-illust">
+                            <div class="illust-item">
+                                <img src="images/4.png" alt="Warrior's ability">
+                                <span class="illust-label">Hit by opponent's ability...</span>
+                            </div>
+                            <span class="illust-arrow">&rarr;</span>
+                            <div class="illust-item">
+                                <img src="images/7.png" alt="Show hand" style="opacity: 0.5;">
+                                <span class="illust-label">Reveal hand & eliminated</span>
+                            </div>
+                        </div>
+
+                        When eliminated, <strong>show your hand to everyone</strong> and place it in your discard area.<br>
+                        Then just watch the rest of the game!
+                    </div>
+                    <div class="rule-note">
+                        <p><span class="note-label">Remember:</span> When an opponent's ability forces you to discard a card, that card's ability does NOT activate. Abilities only work when you play the card yourself on your turn!</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="rule-box">
+                    <div class="rule-box-header">
+                        <div class="rule-step-num">4</div>
+                        <h3>How to Win</h3>
+                    </div>
+                    <div class="rule-box-body">
+                        The game ends in one of these 3 ways:<br><br>
+                        <strong>1. The draw pile runs out</strong><br>
+                        &rarr; All remaining players reveal their hands. <strong>The player with the highest number wins!</strong> If tied, it's a draw.<br>
+
+                        <div class="rule-illust-wide">
+                            <div class="illust-item">
+                                <img src="images/10.png" alt="No.10">
+                                <span class="illust-label">No.10</span>
+                            </div>
+                            <span class="vs-text">VS</span>
+                            <div class="illust-item">
+                                <img src="images/6.png" alt="No.6">
+                                <span class="illust-label">No.6</span>
+                            </div>
+                            <span class="illust-arrow">&rarr;</span>
+                            <div class="illust-item" style="text-align:center;">
+                                <span style="color: var(--color-primary-light); font-weight: 800; font-size: 1.1rem;">No.10 wins!</span>
+                            </div>
+                        </div>
+
+                        <strong>2. Last player standing</strong><br>
+                        &rarr; If everyone else is eliminated, <strong>you win!</strong><br><br>
+                        <strong>3. All players eliminated at once</strong><br>
+                        &rarr; If everyone gets knocked out at the same time, it's a <strong>draw</strong>.
+                    </div>
+                </div>
+
+                <!-- Important Rules -->
+                <div class="rule-box">
+                    <div class="rule-box-header">
+                        <div class="rule-step-num" style="background: linear-gradient(135deg, #c44, #f66);">!</div>
+                        <h3>Important Rules Summary</h3>
+                    </div>
+                    <div class="rule-box-body">
+                        <div class="rule-illust">
+                            <div class="illust-item">
+                                <img src="images/10.png" alt="Kukunochi">
+                                <span class="illust-label">Can't play this!</span>
+                            </div>
+                            <div class="illust-item">
+                                <img src="images/3.png" alt="Scout">
+                                <span class="illust-label">Keep it secret!</span>
+                            </div>
+                            <div class="illust-item">
+                                <img src="images/9.png" alt="Sword Maiden">
+                                <span class="illust-label">Kukunochi's weakness!</span>
+                            </div>
+                        </div>
+
+                        <strong>* Kukunochi (No.10) cannot be played by you</strong><br>
+                        &rarr; It can only be discarded by an opponent's ability. Keep it in your hand!<br><br>
+                        <strong>* Cards discarded by opponents' abilities do NOT activate</strong><br>
+                        &rarr; Abilities only work when you play the card yourself on your turn.<br><br>
+                        <strong>* Info from Scout must be kept secret!</strong><br>
+                        &rarr; When you peek at someone's hand with Scout, you can't tell anyone else. Use the info wisely!
+                    </div>
+                </div>
+            </section>
+
+
+            <hr class="kids-divider">
+
+
+            <!-- ============================================ -->
+            <!--  Card Descriptions Section                    -->
+            <!-- ============================================ -->
+            <section id="cards">
+                <div class="kids-section-title">
+                    <h2>Card Guide</h2>
+                    <p>Here are all 11 types of cards!</p>
+                </div>
+
+                <!-- No.0 Young Kukunochi -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/11.png" alt="Young Kukunochi" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>Young Kukunochi</h3>
+                                <span class="card-explain-number">No.0</span>
+                                <span class="card-count">1 card (Rebirth Card)</span>
+                            </div>
+                            <div class="card-explain-effect">Ability: Photosynthesis</div>
+                            <div class="card-explain-text">
+                                This is a special card that normally has no ability.<br><br>
+                                <strong>It only joins your hand when Kukunochi (No.10) is revived</strong> &mdash; that's why it's called the "Rebirth Card".<br>
+                                Place it sideways next to the draw pile at the start of the game.<br><br>
+                                When the draw pile runs out and players compare numbers, <strong>this card beats Spirit (No.8) only</strong> &mdash; a special rule!
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">Tip:</span> This is Kukunochi's revival token. You can't draw it from the deck during the game.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.1 Boy -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/1.png" alt="Boy" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>Boy</h3>
+                                <span class="card-explain-number">No.1</span>
+                                <span class="card-count">2 cards</span>
+                            </div>
+                            <div class="card-explain-effect">Ability: Revolution</div>
+                            <div class="card-explain-text">
+                                <strong>When the 1st Boy is played:</strong> Nothing happens.<br><br>
+                                <strong>When the 2nd Boy appears:</strong> It gains the same ability as Sword Maiden (No.9)!<br>
+                                That means you can make an opponent draw 1 card, reveal both cards in their hand, and choose 1 to discard.<br><br>
+                                The number is the lowest, but when both Boys appear, it becomes super powerful!
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">Tip:</span> The weakest number, but the 2nd one packs a huge punch! A slow starter that blooms late.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.2 Trainee -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/2.png" alt="Trainee" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>Trainee</h3>
+                                <span class="card-explain-number">No.2</span>
+                                <span class="card-count">2 cards</span>
+                            </div>
+                            <div class="card-explain-effect">Ability: Charge</div>
+                            <div class="card-explain-text">
+                                Pick an opponent and <strong>guess the name of the card in their hand</strong>.<br><br>
+                                <strong>If you're right, they're eliminated!</strong><br>
+                                <strong>If you're wrong, nothing happens.</strong><br><br>
+                                It's a gamble, but if you use Scout to peek at their hand first, you can guess perfectly!
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">Tip:</span> Scout (No.3) + Trainee (No.2) = the ultimate combo! Peek first, then guess for a guaranteed elimination!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.3 Scout -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/3.png" alt="Scout" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>Scout</h3>
+                                <span class="card-explain-number">No.3</span>
+                                <span class="card-count">2 cards</span>
+                            </div>
+                            <div class="card-explain-effect">Ability: Reconnaissance</div>
+                            <div class="card-explain-text">
+                                Pick an opponent and <strong>secretly peek at their hand</strong>.<br><br>
+                                But beware! <strong>You're not allowed to tell anyone else what you saw.</strong><br>
+                                Use the secret info to plan your next move wisely!
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">Tip:</span> Knowing your opponent's card makes it much easier to decide what to do next!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.4 Warrior -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/4.png" alt="Warrior" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>Warrior</h3>
+                                <span class="card-explain-number">No.4</span>
+                                <span class="card-count">2 cards</span>
+                            </div>
+                            <div class="card-explain-effect">Ability: Combat</div>
+                            <div class="card-explain-text">
+                                Pick an opponent and <strong>make them draw 1 card from the draw pile</strong>.<br>
+                                Then, without seeing their hand, <strong>name a card number and force them to discard it if they have it</strong>.<br><br>
+                                Since you can't see their hand, it's all about intuition and reading your opponents!
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">Tip:</span> Try to guess what card your opponent might have. If you're right, big damage!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.5 Brewer -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/5.png" alt="Brewer" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>Brewer</h3>
+                                <span class="card-explain-number">No.5</span>
+                                <span class="card-count">1 card</span>
+                            </div>
+                            <div class="card-explain-effect">Ability: Brewing</div>
+                            <div class="card-explain-text">
+                                Pick an opponent and <strong>both of you reveal your hands</strong>.<br>
+                                The player with the <strong>lower number is eliminated!</strong><br>
+                                If the numbers are the same, <strong>both players are eliminated!</strong><br><br>
+                                It's a duel card &mdash; use it when you're sure your hand is stronger!
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">Tip:</span> Use this when your hand has a high number. If it's low, you'll be the one eliminated!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.6 Masu Craftsman -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/6.png" alt="Masu Craftsman" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>Masu Craftsman</h3>
+                                <span class="card-explain-number">No.6</span>
+                                <span class="card-count">2 cards</span>
+                            </div>
+                            <div class="card-explain-effect">Ability: Craft / Guardian</div>
+                            <div class="card-explain-text">
+                                <strong>When the 1st one is played:</strong> Nothing happens.<br><br>
+                                <strong>When the 2nd one is played:</strong> Say "FOMUS" to summon the <strong>Guardian Masu</strong>!<br>
+                                You get a <strong>barrier that blocks elimination once</strong>. Even if you're about to be knocked out, you survive one time!
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">Tip:</span> If you can play the 2nd one, you get insurance against one elimination. A great safety net!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.7 Farmer -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/7.png" alt="Farmer" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>Farmer</h3>
+                                <span class="card-explain-number">No.7</span>
+                                <span class="card-count">2 cards</span>
+                            </div>
+                            <div class="card-explain-effect">Ability: Cultivate / Harvest</div>
+                            <div class="card-explain-text">
+                                This card lets you <strong>choose which card to draw</strong>!<br><br>
+                                <strong>1st Farmer played:</strong> Next turn, look at the top 2 cards of the draw pile and pick 1.<br>
+                                <strong>2nd Farmer played:</strong> Look at the top 3 cards and pick 1! Return the rest to the pile.
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">Tip:</span> Great for getting the card you want. Aim for powerful cards!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.8 Spirit -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/8.png" alt="Spirit" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>Spirit</h3>
+                                <span class="card-explain-number">No.8</span>
+                                <span class="card-count">2 cards</span>
+                            </div>
+                            <div class="card-explain-effect">Ability: Telepathy</div>
+                            <div class="card-explain-text">
+                                Pick an opponent and <strong>swap your hands completely</strong>.<br><br>
+                                If your hand is weak, you might get a strong card from your opponent! You can also give them a bad card.
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">Tip:</span> Use this when your hand is weak for a chance at a big comeback!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.9 Sword Maiden -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/9.png" alt="Sword Maiden" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>Sword Maiden</h3>
+                                <span class="card-explain-number">No.9</span>
+                                <span class="card-count">1 card</span>
+                            </div>
+                            <div class="card-explain-effect">Ability: Flash Strike</div>
+                            <div class="card-explain-text">
+                                Pick an opponent and <strong>make them draw 1 card, then reveal both cards in their hand</strong>.<br>
+                                You get to <strong>choose 1 card for them to discard</strong>!<br><br>
+                                <strong>This is the only card that can truly defeat Kukunochi (No.10)</strong>. It's Kukunochi's biggest fear!
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">Tip:</span> The only card that can permanently eliminate Kukunochi. Use it wisely!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No.10 Kukunochi -->
+                <div class="card-explain">
+                    <div class="card-explain-inner">
+                        <img src="images/10.png" alt="Kukunochi" class="card-explain-img">
+                        <div class="card-explain-body">
+                            <div class="card-explain-title">
+                                <h3>Kukunochi</h3>
+                                <span class="card-explain-number">No.10</span>
+                                <span class="card-count">1 card</span>
+                            </div>
+                            <div class="card-explain-effect">Ability: Regeneration</div>
+                            <div class="card-explain-text">
+                                <strong>The strongest card in the game</strong> (the final boss!).<br><br>
+                                You can't play it on your turn, but <strong>keeping it in your hand gives you a huge advantage</strong> since it has the highest number.<br><br>
+                                If an opponent's ability forces you to discard it, you're eliminated.<br>
+                                BUT, if you're knocked out by <strong>any card OTHER than Sword Maiden</strong>, you discard your hand and draw the "Rebirth Card" (Young Kukunochi) to come back to life!
+                            </div>
+                            <div class="card-explain-tip">
+                                <p><span class="tip-label">Tip:</span> Keep this in your hand as long as you can. If the game goes to a number comparison, you'll almost certainly win!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Bottom CTA (No Purchase) -->
+            <div class="kids-page-cta">
+                <p>Now that you know the rules and cards, go play SILVA!</p>
+                <a href="index.html" class="btn btn-secondary btn-outline">
+                    <span class="btn-text">Back to Home</span>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="copyright">
+                        <p>&copy; 2025 FOMUS. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div id="chatbot">
+        <button id="chatToggle" aria-label="Ask about rules">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span class="chat-toggle-label">Ask Rules</span>
+        </button>
+        <div id="chatWindow" class="chat-hidden">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <span class="chat-avatar">🌿</span>
+                    <div>
+                        <div class="chat-header-title">SILVA Rules Guide</div>
+                        <div class="chat-header-sub">Ask me anything!</div>
+                    </div>
+                </div>
+                <button id="chatClose" aria-label="Close">&times;</button>
+            </div>
+            <div id="chatMessages" class="chat-messages">
+                <div class="chat-msg bot">
+                    <div class="chat-bubble">Hi there! Ask me anything about SILVA's rules or cards.<br><br>Try questions like "What is Kukunochi?", "How do I set up?", "How do I win?" and more!</div>
+                </div>
+            </div>
+            <div class="chat-quick">
+                <button class="chat-quick-btn" data-q="How to set up">Setup</button>
+                <button class="chat-quick-btn" data-q="Turn flow">Turn Flow</button>
+                <button class="chat-quick-btn" data-q="How to win">Winning</button>
+                <button class="chat-quick-btn" data-q="Kukunochi">Kukunochi</button>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Type your question..." autocomplete="off">
+                <button id="chatSend" aria-label="Send">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Chatbot */
+        #chatbot { position: fixed; bottom: 24px; right: 24px; z-index: 9999; }
+        @media (max-width: 640px) { #chatbot { bottom: 16px; right: 16px; } }
+
+        #chatToggle {
+            display: flex; align-items: center; gap: 8px;
+            background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+            color: #fff; border: none; border-radius: 50px;
+            padding: 14px 22px; cursor: pointer;
+            font-size: 0.95rem; font-weight: 700;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        #chatToggle:hover { transform: scale(1.05); box-shadow: 0 6px 28px rgba(0,0,0,0.5); }
+        .chat-toggle-label { white-space: nowrap; }
+        @media (max-width: 480px) {
+            #chatToggle { padding: 14px; border-radius: 50%; }
+            .chat-toggle-label { display: none; }
+        }
+
+        #chatWindow {
+            position: absolute; bottom: 70px; right: 0;
+            width: 370px; max-height: 520px;
+            background: #0c1a10;
+            border: 1px solid rgba(var(--color-primary-rgb), 0.3);
+            border-radius: 16px;
+            display: flex; flex-direction: column;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+            overflow: hidden;
+            transition: opacity 0.25s, transform 0.25s;
+        }
+        @media (max-width: 480px) {
+            #chatWindow {
+                width: calc(100vw - 32px); right: -8px;
+                max-height: 70vh;
+            }
+        }
+        #chatWindow.chat-hidden {
+            opacity: 0; transform: translateY(16px) scale(0.95);
+            pointer-events: none;
+        }
+        #chatWindow:not(.chat-hidden) {
+            opacity: 1; transform: translateY(0) scale(1);
+        }
+
+        .chat-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 16px;
+            background: rgba(var(--color-primary-rgb), 0.12);
+            border-bottom: 1px solid rgba(var(--color-primary-rgb), 0.15);
+        }
+        .chat-header-info { display: flex; align-items: center; gap: 10px; }
+        .chat-avatar { font-size: 1.5rem; }
+        .chat-header-title { color: #fff; font-weight: 700; font-size: 0.95rem; }
+        .chat-header-sub { color: var(--color-text-muted); font-size: 0.75rem; }
+        #chatClose {
+            background: none; border: none; color: var(--color-text-muted);
+            font-size: 1.5rem; cursor: pointer; padding: 4px 8px; line-height: 1;
+        }
+        #chatClose:hover { color: #fff; }
+
+        .chat-messages {
+            flex: 1; overflow-y: auto; padding: 16px;
+            display: flex; flex-direction: column; gap: 12px;
+            min-height: 200px; max-height: 300px;
+        }
+        .chat-msg { display: flex; }
+        .chat-msg.bot { justify-content: flex-start; }
+        .chat-msg.user { justify-content: flex-end; }
+        .chat-bubble {
+            max-width: 85%; padding: 10px 14px;
+            border-radius: 14px;
+            font-size: 0.9rem; line-height: 1.7;
+        }
+        .chat-msg.bot .chat-bubble {
+            background: rgba(var(--color-primary-rgb), 0.12);
+            color: var(--color-text-secondary);
+            border-bottom-left-radius: 4px;
+        }
+        .chat-msg.user .chat-bubble {
+            background: var(--color-primary-dark);
+            color: #fff;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-quick {
+            display: flex; gap: 6px; padding: 6px 16px 10px;
+            flex-wrap: wrap;
+        }
+        .chat-quick-btn {
+            background: rgba(var(--color-primary-rgb), 0.1);
+            border: 1px solid rgba(var(--color-primary-rgb), 0.25);
+            color: var(--color-primary-light);
+            padding: 5px 12px; border-radius: 20px;
+            font-size: 0.78rem; font-weight: 600;
+            cursor: pointer; transition: background 0.2s;
+        }
+        .chat-quick-btn:hover { background: rgba(var(--color-primary-rgb), 0.22); }
+
+        .chat-input-area {
+            display: flex; gap: 8px; padding: 12px 14px;
+            border-top: 1px solid rgba(var(--color-primary-rgb), 0.12);
+            background: rgba(0,0,0,0.2);
+        }
+        #chatInput {
+            flex: 1; background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+            border-radius: 10px; padding: 10px 14px;
+            color: #fff; font-size: 0.9rem; outline: none;
+            font-family: inherit;
+        }
+        #chatInput::placeholder { color: rgba(255,255,255,0.3); }
+        #chatInput:focus { border-color: var(--color-primary); }
+        #chatSend {
+            background: var(--color-primary); border: none;
+            border-radius: 10px; padding: 8px 12px;
+            color: #fff; cursor: pointer;
+            display: flex; align-items: center;
+            transition: background 0.2s;
+        }
+        #chatSend:hover { background: var(--color-primary-light); }
+    </style>
+
+    <!-- Smooth Scroll + Chatbot JS -->
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    var headerH = document.querySelector('.simple-header').offsetHeight;
+                    window.scrollTo({ top: target.offsetTop - headerH - 16, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // =============================================
+        // SILVA Rules FAQ Chatbot (English)
+        // =============================================
+        (function() {
+            var KB = [
+                // Game overview
+                { keys: ['what','silva','about','game','overview','explain'],
+                  answer: 'SILVA is a bluffing and strategy card game for 2-4 players! There are 11 types of cards (18 total). Try to guess your opponents\' cards, eliminate them, and be the last one standing! Each game takes about 2-10 minutes.' },
+                { keys: ['how many','player','people'],
+                  answer: 'SILVA is for 2 to 4 players. Grab some friends or family and play!' },
+                { keys: ['time','long','minutes','duration'],
+                  answer: 'Each game takes about 2-10 minutes. It\'s quick and fun!' },
+                { keys: ['cards','total','deck','how many cards'],
+                  answer: 'The game has 18 game cards + 2 rule cards = 20 cards total. There are 11 different types of game cards.' },
+
+                // Setup
+                { keys: ['setup','set up','prepare','start','begin','getting started'],
+                  answer: '1. Remove "Young Kukunochi (No.0)" and shuffle the remaining 17 cards face-down to make the Draw Pile.\n2. Place Young Kukunochi sideways next to the pile (this is the "Rebirth Card").\n3. Each player draws 1 card as their hand.\n4. Decide who goes first (rock-paper-scissors works!). Play proceeds clockwise.' },
+                { keys: ['draw pile','deck pile'],
+                  answer: 'The Draw Pile is the 17 cards (excluding Young Kukunochi) shuffled face-down. On your turn, you draw 1 card from the top of this pile.' },
+                { keys: ['hand','your card'],
+                  answer: 'Your hand is the card(s) only you can see. You start with 1 card, draw 1 more each turn (making 2), then play 1 and keep 1.' },
+                { keys: ['rebirth','rebirth card'],
+                  answer: 'The Rebirth Card is "Young Kukunochi (No.0)". Place it sideways next to the draw pile at the start. It only enters play when Kukunochi (No.10) is revived.' },
+
+                // Turn flow
+                { keys: ['turn','flow','my turn','what do','phase','step'],
+                  answer: 'On your turn, do these 4 things:\n1. Draw 1 card from the draw pile (now you have 2)\n2. Choose 1 to play face-up\n3. Use that card\'s ability (mandatory!)\n4. Place the used card in your discard area\nThen it\'s the next player\'s turn!' },
+
+                // Elimination
+                { keys: ['eliminat','knocked out','game over','out','lose','dead'],
+                  answer: 'If a card\'s ability knocks you out, you\'re "Eliminated" = Game Over for you! Show your hand to everyone and place it in your discard area. Then just watch the rest of the game.' },
+
+                // Winning
+                { keys: ['win','victory','end','finish','how to win'],
+                  answer: 'The game ends in 3 possible ways:\n1. Draw pile runs out → Everyone reveals hands, highest number wins! (Tie = draw)\n2. Last player standing → You win!\n3. All eliminated at once → It\'s a draw.' },
+                { keys: ['draw','tie','equal'],
+                  answer: 'A draw happens in 2 cases: 1) When the draw pile runs out and the number comparison is tied. 2) When all players are eliminated at the same time.' },
+
+                // Important rules
+                { keys: ['can\'t play','cannot play','not play'],
+                  answer: 'Kukunochi (No.10) cannot be played from your hand on your turn. It can only be discarded through an opponent\'s ability. Keep it in your hand!' },
+                { keys: ['ability activate','effect trigger','forced discard','discard activate'],
+                  answer: 'Important rule! When an opponent forces you to discard a card, that card\'s ability does NOT activate. Abilities only work when YOU play the card on YOUR turn!' },
+                { keys: ['secret','tell','share','reveal info'],
+                  answer: 'When you use Scout (No.3) to peek at someone\'s hand, you must keep it secret! You can\'t tell any other players what you saw.' },
+
+                // Card: Kukunochi
+                { keys: ['kukunochi','no.10','number 10','regenerat','strongest','boss'],
+                  answer: '[Kukunochi (No.10)] The strongest card! You can\'t play it yourself, but keeping it in your hand is a huge advantage. If eliminated by anything OTHER than Sword Maiden, you draw the Rebirth Card and come back! But Sword Maiden defeats Kukunochi permanently.' },
+                // Card: Sword Maiden
+                { keys: ['sword maiden','no.9','number 9','flash strike','katana'],
+                  answer: '[Sword Maiden (No.9)] Make an opponent draw 1, reveal both cards, then choose 1 to discard. The ONLY card that can permanently defeat Kukunochi (No.10)! It prevents Kukunochi from reviving.' },
+                // Card: Spirit
+                { keys: ['spirit','no.8','number 8','telepathy','swap','exchange'],
+                  answer: '[Spirit (No.8)] Pick an opponent and swap hands completely. Great when your hand is weak — you might steal a powerful card! But be careful, you might give away something good too.' },
+                // Card: Farmer
+                { keys: ['farmer','no.7','number 7','cultivat','harvest','pick card'],
+                  answer: '[Farmer (No.7)] 1st played: Next turn, look at top 2 cards and pick 1. 2nd played: Look at top 3 and pick 1! Great for getting the card you want.' },
+                // Card: Masu Craftsman
+                { keys: ['masu','craftsman','no.6','number 6','guardian','barrier','fomus','shield'],
+                  answer: '[Masu Craftsman (No.6)] 1st played: No effect. 2nd played: Say "FOMUS" to summon the Guardian Masu! You get a barrier that blocks elimination once. Like insurance!' },
+                // Card: Brewer
+                { keys: ['brewer','no.5','number 5','brewing','duel','compare','showdown'],
+                  answer: '[Brewer (No.5)] Pick an opponent and both reveal your hands. The one with the lower number is eliminated! If tied, BOTH are eliminated. Use it when your hand is strong!' },
+                // Card: Warrior
+                { keys: ['warrior','no.4','number 4','combat','fight','force discard'],
+                  answer: '[Warrior (No.4)] Make an opponent draw 1 card, then (without seeing their hand) name a card to force them to discard. It\'s a guessing game! Combo with Scout for better accuracy.' },
+                // Card: Scout
+                { keys: ['scout','no.3','number 3','reconn','peek','spy','look'],
+                  answer: '[Scout (No.3)] Secretly peek at an opponent\'s hand. But you can\'t tell anyone what you saw! Use the info to plan your next move.' },
+                // Card: Trainee
+                { keys: ['trainee','no.2','number 2','charge','guess','name'],
+                  answer: '[Trainee (No.2)] Guess the name of an opponent\'s card. If correct, they\'re eliminated! If wrong, nothing happens. Use Scout first for a guaranteed hit!' },
+                // Card: Boy
+                { keys: ['boy','no.1','number 1','revolution'],
+                  answer: '[Boy (No.1)] 1st played: No effect. When the 2nd Boy appears, it gets the same ability as Sword Maiden! Low number but incredibly powerful when both appear.' },
+                // Card: Young Kukunochi
+                { keys: ['young kukunochi','no.0','number 0','photosynthesis','revival'],
+                  answer: '[Young Kukunochi (No.0)] A special card with no normal ability. It\'s the "Rebirth Card" placed sideways at the start. Only enters play when Kukunochi revives. In number comparison, it beats Spirit (No.8) only!' },
+
+                // Combos & strategy
+                { keys: ['combo','strategy','best','powerful','strong','tip'],
+                  answer: 'The best combo is Scout → Trainee! Peek at their hand with Scout, then guess perfectly with Trainee for a guaranteed elimination. Also, the Boy\'s 2-card combo is super strong!' },
+
+                // Discard area
+                { keys: ['discard','used card','played card'],
+                  answer: 'Used cards are placed in front of you from left to right. This is your "discard area". Everyone can see the discards, so you can track which cards have been played!' },
+
+                // --- Detailed rules & edge cases ---
+
+                // Brewer same number
+                { keys: ['brewer same','brewer tie','brewer equal','both eliminat'],
+                  answer: 'If you use Brewer (No.5) and both players have the same number, BOTH are eliminated! It\'s not a draw — you\'re both out. Be careful!' },
+
+                // Kukunochi revival details
+                { keys: ['kukunochi reviv','kukunochi come back','regenerat how','rebirth how','kukunochi die'],
+                  answer: 'When Kukunochi is eliminated by any card OTHER than Sword Maiden:\n1. Discard all your cards\n2. Take the Rebirth Card (Young Kukunochi) from beside the draw pile\n3. You\'re back in the game! Continue from your next turn.\nBut if Sword Maiden eliminates Kukunochi, NO revival!' },
+
+                // Warrior miss
+                { keys: ['warrior miss','warrior wrong','warrior fail','combat miss'],
+                  answer: 'If you use Warrior (No.4) and name a card the opponent doesn\'t have, nothing happens. No penalty! So go ahead and make a bold guess.' },
+
+                // Warrior draw card targeting
+                { keys: ['warrior draw','warrior 2 cards','warrior new card'],
+                  answer: 'Warrior makes the opponent draw 1 card first, giving them 2 cards. Then you name a card to discard. The newly drawn card can also be targeted!' },
+
+                // Trainee miss
+                { keys: ['trainee miss','trainee wrong','trainee fail','charge miss'],
+                  answer: 'If you guess wrong with Trainee (No.2), nothing happens. No penalty! So it\'s worth a shot even if you\'re not sure.' },
+
+                // Farmer card visibility
+                { keys: ['farmer see','farmer look','farmer secret','farmer show'],
+                  answer: 'When Farmer lets you look at cards from the draw pile, you pick 1 and put the rest back. You don\'t have to show anyone what you saw. It\'s your secret!' },
+
+                // Guardian Masu details
+                { keys: ['guardian when','barrier when','guardian expire','barrier how many','guardian block'],
+                  answer: 'The Guardian Masu barrier blocks elimination ONCE. For example, if you lose a Brewer duel, the barrier saves you! But it\'s used up after that — you can\'t block a second time.' },
+
+                // Boy 2nd timing
+                { keys: ['boy 2nd','boy second','boy when','revolution when','boy timing'],
+                  answer: 'The 2nd Boy\'s ability activates immediately when it\'s played. If the 1st Boy is already in someone\'s discard area and you play the 2nd one, you get Sword Maiden\'s ability right away!' },
+
+                // Spirit can't refuse
+                { keys: ['spirit refuse','spirit reject','spirit don\'t want','swap refuse'],
+                  answer: 'You can\'t refuse the Spirit\'s swap! Once someone plays Spirit and chooses you, the hand swap happens no matter what.' },
+
+                // Sword Maiden selection
+                { keys: ['sword maiden choose','sword maiden pick','sword maiden which','flash strike select'],
+                  answer: 'With Sword Maiden, you make the opponent draw 1 card first, then they reveal BOTH cards face-up. You get to see both before choosing which one they must discard. Very powerful!' },
+
+                // Draw pile empty
+                { keys: ['pile empty','no cards left','run out','deck empty','pile gone'],
+                  answer: 'When the draw pile is empty, the game ends after the current turn. All surviving players reveal their hands and compare numbers. The highest number wins! Tied = draw.' },
+
+                // Young Kukunochi vs Spirit
+                { keys: ['young kukunochi spirit','no.0 spirit','0 vs 8','young beat'],
+                  answer: 'In the final number comparison (when the draw pile runs out), Young Kukunochi (No.0) beats Spirit (No.8) only! Normally the higher number wins, but this is a special exception.' },
+
+                // Simultaneous elimination
+                { keys: ['simultaneous','at the same time','both out','all out'],
+                  answer: 'If two players are eliminated simultaneously (e.g., Brewer tie), and other players survive, the game continues. If ALL players are eliminated at once, it\'s a draw!' },
+
+                // Turn order
+                { keys: ['turn order','clockwise','who goes','first player'],
+                  answer: 'The first player is decided by rock-paper-scissors or any other method. After that, turns go clockwise (to the left). Skip eliminated players.' },
+
+                // Card count breakdown
+                { keys: ['card count','breakdown','how many each','distribution'],
+                  answer: 'Card breakdown:\nNo.10 Kukunochi: 1\nNo.9 Sword Maiden: 1\nNo.8 Spirit: 2\nNo.7 Farmer: 2\nNo.6 Masu Craftsman: 2\nNo.5 Brewer: 1\nNo.4 Warrior: 2\nNo.3 Scout: 2\nNo.2 Trainee: 2\nNo.1 Boy: 2\nNo.0 Young Kukunochi: 1 (Rebirth)\nTotal: 18 game cards!' },
+            ];
+
+            var chatToggle = document.getElementById('chatToggle');
+            var chatWindow = document.getElementById('chatWindow');
+            var chatClose = document.getElementById('chatClose');
+            var chatInput = document.getElementById('chatInput');
+            var chatSend = document.getElementById('chatSend');
+            var chatMessages = document.getElementById('chatMessages');
+
+            chatToggle.addEventListener('click', function() {
+                chatWindow.classList.toggle('chat-hidden');
+                if (!chatWindow.classList.contains('chat-hidden')) {
+                    chatInput.focus();
+                }
+            });
+            chatClose.addEventListener('click', function() {
+                chatWindow.classList.add('chat-hidden');
+            });
+
+            document.querySelectorAll('.chat-quick-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    handleQuestion(this.dataset.q);
+                });
+            });
+
+            chatSend.addEventListener('click', function() {
+                var q = chatInput.value.trim();
+                if (q) handleQuestion(q);
+            });
+            chatInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    var q = chatInput.value.trim();
+                    if (q) handleQuestion(q);
+                }
+            });
+
+            function handleQuestion(q) {
+                addMessage(q, 'user');
+                chatInput.value = '';
+                setTimeout(function() {
+                    var answer = findAnswer(q);
+                    addMessage(answer, 'bot');
+                }, 400);
+            }
+
+            function addMessage(text, type) {
+                var div = document.createElement('div');
+                div.className = 'chat-msg ' + type;
+                var bubble = document.createElement('div');
+                bubble.className = 'chat-bubble';
+                bubble.innerHTML = text.replace(/\n/g, '<br>');
+                div.appendChild(bubble);
+                chatMessages.appendChild(div);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function findAnswer(q) {
+                var input = q.toLowerCase();
+                var best = null;
+                var bestScore = 0;
+
+                for (var i = 0; i < KB.length; i++) {
+                    var score = 0;
+                    for (var j = 0; j < KB[i].keys.length; j++) {
+                        if (input.indexOf(KB[i].keys[j].toLowerCase()) !== -1) {
+                            score += KB[i].keys[j].length;
+                        }
+                    }
+                    if (score > bestScore) {
+                        bestScore = score;
+                        best = KB[i];
+                    }
+                }
+
+                if (best) return best.answer;
+                return 'Sorry, I didn\'t understand that question.\nTry asking about "Kukunochi", "setup", "turn flow", "how to win", or any card name!';
+            }
+        })();
+    </script>
+
+</body>
+</html>

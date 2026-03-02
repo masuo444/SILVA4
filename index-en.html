@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <title>SILVA Card Game | FOMUS</title>
+    <meta name="description" content="SILVA is an innovative card game of bluffing and strategy by FOMUS. Simple rules with deep, engaging gameplay.">
+
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="SILVA, card game, bluffing, FOMUS, strategy game, Kukunochi">
+    <meta name="author" content="FOMUS">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="SILVA Card Game | FOMUS">
+    <meta property="og:description" content="SILVA is an innovative card game of bluffing and strategy by FOMUS. Simple rules with deep, engaging gameplay.">
+    <meta property="og:image" content="images/11.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Young Kukunochi - SILVA Card Game">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SILVA Card Game | FOMUS">
+    <meta name="twitter:description" content="SILVA is an innovative card game of bluffing and strategy by FOMUS.">
+    <meta name="twitter:image" content="images/11.png">
+    <meta name="twitter:image:alt" content="Young Kukunochi - SILVA Card Game">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/components.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="preload" href="js/main.js" as="script">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "SILVA Card Game",
+        "description": "An innovative card game of bluffing and strategy by FOMUS",
+        "brand": {
+            "@type": "Brand",
+            "name": "FOMUS"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip to Content Link for Accessibility -->
+    <a class="skip-link screen-reader-text" href="#main">Skip to main content</a>
+
+
+    <!-- Header -->
+    <header class="site-header" id="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="site-branding">
+                    <h1 class="site-title">
+                        <a href="#home" class="brand-link">
+                            <span class="brand-text">SILVA</span>
+                            <span class="brand-subtitle">CARD GAME</span>
+                        </a>
+                    </h1>
+                </div>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link" data-section="about">
+                            <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></span>
+                            <span class="nav-text">About</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#cards" class="nav-link" data-section="cards">
+                            <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M9 3v18"/></svg></span>
+                            <span class="nav-text">Cards</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#rules" class="nav-link" data-section="rules">
+                            <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+                            <span class="nav-text">Rules</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="cards-kids-en.html" class="nav-link nav-link-kids">
+                            <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></span>
+                            <span class="nav-text">Kids Page</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link nav-link-en">
+                            <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+                            <span class="nav-text">日本語</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="header-actions">
+                    <div class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Progress Bar -->
+        <div class="scroll-progress">
+            <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main">
+
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-background">
+                <div class="hero-particles" id="heroParticles"></div>
+                <div class="hero-gradient"></div>
+            </div>
+
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></span>
+                        <span class="badge-text">A Japanese Bluffing Card Game</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        <span class="title-main">SILVA</span>
+                        <span class="title-sub">CARD GAME</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        An innovative card game of bluffing and strategy.<br>
+                        <strong>Simple rules with deep, engaging gameplay.</strong>
+                    </p>
+
+
+                    <div class="hero-buttons">
+                        <a href="#rules" class="btn btn-secondary btn-outline">
+                            <span class="btn-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+                            <span class="btn-text">Learn the Rules</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="card-showcase">
+                        <div class="showcase-card card-featured single-card" data-tilt>
+                            <div class="card-glow"></div>
+                            <img src="images/back.png" alt="SILVA Card Back" class="showcase-card-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <div class="scroll-mouse">
+                    <div class="scroll-wheel"></div>
+                </div>
+                <span class="scroll-text">Scroll to explore</span>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">
+                        <span class="badge-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></span>
+                        <span class="badge-text">About Game</span>
+                    </div>
+                    <h2 class="section-title">Play SILVA</h2>
+                    <p class="section-description">
+                        An innovative card game with simple rules and deep strategic bluffing
+                    </p>
+                </div>
+
+                <div class="game-info-grid">
+                    <div class="game-info-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="info-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                        <h3 class="info-title">Play Time</h3>
+                        <p class="info-value">2-10 min</p>
+                        <p class="info-description">Quick yet intense gameplay</p>
+                    </div>
+
+                    <div class="game-info-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="info-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                        <h3 class="info-title">Players</h3>
+                        <p class="info-value">2-4</p>
+                        <p class="info-description">Great for small groups</p>
+                    </div>
+
+                    <div class="game-info-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="info-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+                        <h3 class="info-title">Contents</h3>
+                        <p class="info-value">20 cards</p>
+                        <p class="info-description">18 game cards + 2 rule cards</p>
+                    </div>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-text" data-aos="fade-right">
+
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
+                                <div class="feature-content">
+                                    <h4>Bluffing</h4>
+                                    <p>Deduce your opponent's hand in a deep game of reading and deception</p>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                                <div class="feature-content">
+                                    <h4>Quick Play</h4>
+                                    <p>Experience intense gameplay in just a few minutes</p>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+                                <div class="feature-content">
+                                    <h4>Strategy</h4>
+                                    <p>Make optimal decisions with limited information</p>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15l-2 5l9-11h-5l2-5L7 15h5z"/></svg></div>
+                                <div class="feature-content">
+                                    <h4>Replayability</h4>
+                                    <p>Discover something new every time you play</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Cards Section -->
+        <section id="cards" class="cards section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">
+                        <span class="badge-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M9 3v18"/></svg></span>
+                        <span class="badge-text">Card Collection</span>
+                    </div>
+                    <h2 class="section-title">Card Gallery</h2>
+                    <p class="section-description">
+                        11 unique card types for intense psychological battles
+                    </p>
+                </div>
+
+                <!-- Cards Toggle Button (Mobile Only) -->
+                <div class="cards-toggle-container mobile-only">
+                    <button id="cardsToggleBtn" class="cards-toggle-btn">
+                        <span class="toggle-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M9 3v18"/></svg></span>
+                        <span class="toggle-text">View Cards</span>
+                        <span class="toggle-arrow">&#9660;</span>
+                    </button>
+                </div>
+
+                <!-- Card Grid -->
+                <div class="cards-grid-container desktop-visible" id="cardsGridContainer">
+                    <div class="cards-scroll-hint mobile-only">
+                        <p>&larr; Swipe to see all cards &rarr;</p>
+                    </div>
+                    <div class="cards-grid" id="cardsGrid">
+                        <!-- Cards generated dynamically by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Card Description Link -->
+                <div style="text-align: center; margin-top: var(--spacing-xl);">
+                    <a href="cards-en.html" class="btn btn-secondary btn-outline">
+                        <span class="btn-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+                        <span class="btn-text">View Card Descriptions</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Card Modal -->
+        <div id="cardModal" class="modal">
+            <div class="modal-overlay" id="modalOverlay"></div>
+            <div class="modal-content">
+                <button class="modal-close" id="modalClose" aria-label="Close">
+                    <span class="close-icon">&times;</span>
+                </button>
+
+                <div class="modal-card-display">
+                    <div class="modal-card-image">
+                        <div class="card-3d-container">
+                            <img id="modalCardImage" src="" alt="Card Image" class="card-3d">
+                        </div>
+                    </div>
+
+                    <div class="modal-card-info">
+                        <div class="modal-header">
+                            <h3 id="modalCardName" class="modal-title"></h3>
+                            <div class="modal-level" id="modalCardLevel"></div>
+                        </div>
+
+                        <div class="modal-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Character</span>
+                                <span id="modalCharacterName" class="detail-value"></span>
+                            </div>
+
+                            <div class="detail-item">
+                                <span class="detail-label">Ability</span>
+                                <span id="modalEffect" class="detail-value"></span>
+                            </div>
+
+                            <div class="detail-item description">
+                                <span class="detail-label">Description</span>
+                                <p id="modalDescription" class="detail-description"></p>
+                            </div>
+                        </div>
+
+                        <div class="modal-actions">
+                            <button class="btn btn-secondary" id="modalPrevCard">
+                                <span class="btn-icon">&larr;</span>
+                                <span class="btn-text">Previous</span>
+                            </button>
+                            <button class="btn btn-secondary" id="modalNextCard">
+                                <span class="btn-text">Next</span>
+                                <span class="btn-icon">&rarr;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rules Section -->
+        <section id="rules" class="rules section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">
+                        <span class="badge-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+                        <span class="badge-text">Game Rules</span>
+                    </div>
+                    <h2 class="section-title">How to Play</h2>
+                    <p class="section-description">
+                        Simple rules to enter the world of bluffing
+                    </p>
+                </div>
+
+                <div class="rules-timeline">
+                    <div class="rule-step" data-aos="fade-up" data-aos-delay="100">
+                        <div class="step-number">
+                            <span class="number">1</span>
+                            <div class="step-connector"></div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="1" width="22" height="22" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><circle cx="15.5" cy="8.5" r="1.5"/><circle cx="15.5" cy="15.5" r="1.5"/><circle cx="8.5" cy="15.5" r="1.5"/></svg></div>
+                            <h3 class="step-title">Setup</h3>
+                            <p class="step-description">
+                                <strong>Shuffle the 17 cards</strong> (excluding Young Kukunochi / No.0) face-down to form the Draw Pile.<br>
+                                <strong>Place Young Kukunochi sideways next to the pile</strong> as the "Rebirth Card".<br>
+                                Each player draws 1 card as their hand. Decide who goes first, then proceed clockwise.
+                            </p>
+                            <div class="step-tips">
+                                <div class="tip-item">
+                                    <span class="tip-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></span>
+                                    <span class="tip-text">Shuffle the cards well to keep the game fair</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rule-step" data-aos="fade-up" data-aos-delay="200">
+                        <div class="step-number">
+                            <span class="number">2</span>
+                            <div class="step-connector"></div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+                            <h3 class="step-title">Turn Flow</h3>
+                            <p class="step-description">
+                                1. <strong>Draw 1 card from the draw pile, giving you 2 cards.</strong><br>
+                                2. <strong>Choose 1 card to play face-up and activate its ability.</strong><br>
+                                3. Place the used card in your discard area (left to right).<br>
+                                4. After resolving the ability, your turn ends. Next player clockwise.
+                            </p>
+                            <div class="step-tips">
+                                <div class="tip-item">
+                                    <span class="tip-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg></span>
+                                    <span class="tip-text">Cards discarded by opponents' abilities do not activate</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rule-step" data-aos="fade-up" data-aos-delay="300">
+                        <div class="step-number">
+                            <span class="number">3</span>
+                            <div class="step-connector"></div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.5A1.5 1.5 0 0 1 21 3.5v9a1.5 1.5 0 0 1-1.5 1.5H17"/></svg></div>
+                            <h3 class="step-title">Elimination</h3>
+                            <p class="step-description">
+                                Eliminated players must <strong>reveal their hand and add it to their discard area.</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="rule-step" data-aos="fade-up" data-aos-delay="400">
+                        <div class="step-number">
+                            <span class="number">4</span>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+                            <h3 class="step-title">Victory Conditions</h3>
+                            <p class="step-description">
+                                The game ends in one of these ways:<br><br>
+                                <strong>1. Draw pile runs out</strong> &rarr; Remaining players reveal hands; highest number wins. Tied = draw.<br><br>
+                                <strong>2. Last player standing</strong> &rarr; Instant victory for the survivor.<br><br>
+                                <strong>3. All eliminated simultaneously</strong> &rarr; Draw.
+                            </p>
+                            <div class="step-tips">
+                                <div class="tip-item">
+                                    <span class="tip-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></span>
+                                    <span class="tip-text">Master the art of bluffing to become the true winner</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rules-cta">
+                    <div class="cta-content">
+                        <h3 class="cta-title">Now that you know the rules, give it a try!</h3>
+                        <p class="cta-description">Learn the card abilities and enjoy the mind games</p>
+                    </div>
+
+                    <!-- YouTube Video Embed -->
+                    <div class="video-container">
+                        <div class="video-wrapper">
+                            <iframe
+                                src="https://www.youtube.com/embed/Tn4nYx-s7Kw?si=viJk6Z__KhPYEiSY"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <div class="cta-buttons">
+                        <a href="#cards" class="btn btn-primary">
+                            <span class="btn-text">View Card Abilities</span>
+                            <span class="btn-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M9 3v18"/></svg></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section brand">
+                    <div class="footer-logo">
+                        <h3 class="footer-title">SILVA</h3>
+                        <p class="footer-tagline">Card Game</p>
+                    </div>
+                    <p class="footer-description">
+                        An innovative card game of bluffing and strategy by FOMUS.
+                        Simple rules with deep, engaging gameplay.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-heading">Game</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#cards">Card Gallery</a></li>
+                        <li><a href="cards-en.html">Card Descriptions</a></li>
+                        <li><a href="#rules">Rules</a></li>
+                        <li><a href="cards-kids-en.html">Kids Page</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="footer-section">
+                    <h4 class="footer-heading">FOMUS</h4>
+                    <p class="footer-text">
+                        Creating new entertainment experiences through innovative projects.
+                    </p>
+                    <div class="footer-badges">
+                        <span class="badge">Made in Japan</span>
+                        <span class="badge">Card Game</span>
+                        <span class="badge">Strategy</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="copyright">
+                        <p>&copy; 2025 FOMUS. All rights reserved.</p>
+                        <p class="sub-text">SILVA is an original card game made in Japan.</p>
+                    </div>
+                    <div class="footer-legal">
+                        <a href="/privacy" class="legal-link">Privacy Policy</a>
+                        <a href="/terms" class="legal-link">Terms of Use</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7 14l5-5 5 5z"/>
+        </svg>
+        <span class="back-to-top-text">TOP</span>
+    </button>
+
+    <!-- Floating Action Button -->
+    <div class="fab-container">
+        <button class="fab-main" id="fabMain" aria-label="Quick actions">
+            <span class="fab-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="fab-menu" id="fabMenu">
+            <a href="#cards" class="fab-item fab-cards">
+                <span class="fab-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M9 3v18"/></svg></span>
+                <span class="fab-label">Cards</span>
+            </a>
+            <a href="#rules" class="fab-item fab-community">
+                <span class="fab-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+                <span class="fab-label">Rules</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- English Card Data Override (must be before main.js) -->
+    <script>
+    window.SILVA_CARDS_OVERRIDE = [
+        { id: 10, name: "Kukunochi", characterName: "Kukunochi", effect: "Regeneration",
+          description: "Cannot be played from hand. If forced to discard, you're eliminated. However, if defeated by any card other than Sword Maiden, discard your hand and draw the Rebirth Card to revive. The resurrecting final boss.",
+          image: "images/10.png", category: "high", level: "No.10", count: 1 },
+        { id: 9, name: "Sword Maiden", characterName: "Sword Maiden", effect: "Flash Strike",
+          description: "Force target to draw 1 card, reveal both cards, then choose 1 to discard. The only card that can permanently defeat Kukunochi.",
+          image: "images/9.png", category: "high", level: "No.9", count: 1 },
+        { id: 8, name: "Spirit", characterName: "Spirit", effect: "Telepathy",
+          description: "Swap hands with a target opponent. A strategic card for hand manipulation.",
+          image: "images/8.png", category: "high", level: "No.8", count: 2 },
+        { id: 7, name: "Farmer", characterName: "Farmer", effect: "Cultivate / Harvest",
+          description: "1st played: Next turn, look at top 2 cards and choose 1. 2nd played: Look at top 3 and choose 1. Return the rest. The deck manipulation specialist.",
+          image: "images/7.png", category: "middle", level: "No.7", count: 2 },
+        { id: 6, name: "Masu Craftsman", characterName: "Masu Craftsman", effect: "Craft / Guardian",
+          description: "1st played: No effect. 2nd played: Declare 'FOMUS' to summon Guardian Masu, blocking elimination once. An insurance card.",
+          image: "images/6.png", category: "middle", level: "No.6", count: 2 },
+        { id: 5, name: "Brewer", characterName: "Brewer", effect: "Brewing",
+          description: "Both you and a target reveal hands. The lower number is eliminated. If tied, both are eliminated. A duel card for the bold.",
+          image: "images/5.png", category: "middle", level: "No.5", count: 1 },
+        { id: 4, name: "Warrior", characterName: "Warrior", effect: "Combat",
+          description: "Force target to draw 1 card, then name a card to discard (without seeing their hand). An expert at blind guard destruction.",
+          image: "images/4.png", category: "middle", level: "No.4", count: 2 },
+        { id: 3, name: "Scout", characterName: "Scout", effect: "Reconnaissance",
+          description: "Secretly view a target's hand. You cannot share what you see. The intelligence specialist.",
+          image: "images/3.png", category: "low", level: "No.3", count: 2 },
+        { id: 2, name: "Trainee", characterName: "Trainee", effect: "Charge",
+          description: "Guess a target's card name. If correct, they're eliminated. If wrong, nothing happens. A high-risk gamble card.",
+          image: "images/2.png", category: "low", level: "No.2", count: 2 },
+        { id: 1, name: "Boy", characterName: "Boy", effect: "Revolution",
+          description: "1st played: No effect. When the 2nd Boy appears, it gains Sword Maiden's ability (force draw, reveal, choose discard). A slow-burn finisher.",
+          image: "images/1.png", category: "low", level: "No.1", count: 2 },
+        { id: 0, name: "Young Kukunochi", characterName: "Young Kukunochi", effect: "Photosynthesis",
+          description: "Normally no effect. Only enters play when Kukunochi regenerates. In the final number comparison, it beats Spirit (No.8) only. The revival token.",
+          image: "images/11.png", category: "high", level: "No.0", count: 1 }
+    ];
+    </script>
+
+    <!-- JavaScript Files -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/components.js"></script>
+
+</body>
+</html>

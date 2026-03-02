@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Card Descriptions | SILVA Card Game</title>
+    <meta name="description" content="Detailed descriptions of all 11 card types in the SILVA card game.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <style>
+        .cards-page {
+            min-height: 100vh;
+            padding-top: 100px;
+            padding-bottom: 60px;
+        }
+        .cards-page-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .cards-page-header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: var(--color-primary-light);
+            margin-bottom: 12px;
+        }
+        .cards-page-header p {
+            color: var(--color-text-secondary);
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--color-primary-light); }
+
+        .card-explain {
+            background: var(--color-bg-card);
+            border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+            border-radius: 16px;
+            margin-bottom: 24px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .card-explain:hover {
+            border-color: rgba(var(--color-primary-rgb), 0.4);
+        }
+        .card-explain-inner {
+            display: flex;
+            gap: 24px;
+            padding: 24px;
+            align-items: flex-start;
+        }
+        @media (max-width: 640px) {
+            .card-explain-inner {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 16px;
+                padding: 20px 16px;
+            }
+        }
+        .card-explain-img {
+            flex-shrink: 0;
+            width: 110px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+        }
+        @media (max-width: 640px) {
+            .card-explain-img { width: 100px; }
+        }
+        .card-explain-body { flex: 1; min-width: 0; }
+        .card-explain-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 4px;
+            flex-wrap: wrap;
+        }
+        @media (max-width: 640px) {
+            .card-explain-title { justify-content: center; }
+        }
+        .card-explain-title h2 {
+            font-size: clamp(1.15rem, 3vw, 1.4rem);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin: 0;
+        }
+        .card-explain-number {
+            background: rgba(var(--color-primary-rgb), 0.15);
+            color: var(--color-primary-light);
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .card-explain-effect {
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.88rem;
+            margin-bottom: 10px;
+        }
+        .card-count {
+            display: inline-block;
+            background: rgba(255,255,255,0.06);
+            color: var(--color-text-muted);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            margin-left: 4px;
+        }
+        .card-explain-text {
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+        .cards-page-cta {
+            text-align: center;
+            margin-top: 56px;
+            padding: 32px 20px;
+            background: rgba(var(--color-primary-rgb), 0.06);
+            border-radius: 16px;
+        }
+        .cards-page-cta p {
+            color: var(--color-text-secondary);
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        .cards-page-cta .btn { margin: 0 8px 8px; }
+
+        /* Simple Header */
+        .simple-header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(6, 13, 8, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(var(--color-primary-rgb), 0.1);
+            padding: 16px 0;
+        }
+        .simple-header .container {
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .simple-header .brand-link {
+            text-decoration: none; display: flex; align-items: baseline; gap: 8px;
+        }
+        .simple-header .brand-text {
+            font-size: 1.4rem; font-weight: 800; color: var(--color-primary-light);
+        }
+        .simple-header .brand-subtitle {
+            font-size: 0.7rem; color: var(--color-text-muted);
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+        .simple-header .header-nav { display: flex; gap: 16px; align-items: center; }
+        .simple-header .header-nav a {
+            color: var(--color-text-secondary); text-decoration: none;
+            font-size: 0.9rem; font-weight: 500; transition: color 0.2s;
+        }
+        .simple-header .header-nav a:hover { color: var(--color-primary-light); }
+        .simple-header .header-nav .kids-link {
+            background: rgba(255, 200, 60, 0.1);
+            border: 1px solid rgba(255, 200, 60, 0.3);
+            color: #ffc83c;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .simple-header .header-nav .kids-link:hover {
+            background: rgba(255, 200, 60, 0.18);
+            color: #ffe080;
+        }
+        .simple-header .header-nav .lang-link {
+            background: rgba(100, 180, 255, 0.1);
+            border: 1px solid rgba(100, 180, 255, 0.3);
+            color: #78beff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .simple-header .header-nav .lang-link:hover {
+            background: rgba(100, 180, 255, 0.2);
+            color: #a0d0ff;
+        }
+        @media (max-width: 640px) {
+            .simple-header .header-nav { gap: 8px; flex-wrap: wrap; }
+            .simple-header .header-nav a { font-size: 0.78rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="simple-header">
+        <div class="container">
+            <a href="index.html" class="brand-link">
+                <span class="brand-text">SILVA</span>
+                <span class="brand-subtitle">CARD GAME</span>
+            </a>
+            <nav class="header-nav">
+                <a href="index.html">Home</a>
+                <a href="index.html#rules">Rules</a>
+                <a href="cards-kids-en.html" class="kids-link">Kids Page</a>
+                <a href="cards.html" class="lang-link">日本語</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="cards-page">
+        <div class="container">
+
+            <a href="index.html#cards" class="back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                Back to Home
+            </a>
+
+            <div class="cards-page-header">
+                <h1>Card Descriptions</h1>
+                <p>A detailed guide to all 11 card types in SILVA and their strategic abilities.</p>
+            </div>
+
+            <!-- No.0 Young Kukunochi -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/11.png" alt="Young Kukunochi" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>Young Kukunochi</h2>
+                            <span class="card-explain-number">No.0</span>
+                            <span class="card-count">1 card (Rebirth Card)</span>
+                        </div>
+                        <div class="card-explain-effect">Ability: Photosynthesis</div>
+                        <div class="card-explain-text">
+                            Normally has no ability. This special card is placed sideways next to the draw pile at the start of the game.<br>
+                            It only enters a player's hand when Kukunochi (No.10) uses its Regeneration ability. In the final number comparison (when the draw pile is empty), it has a special rule where it beats Spirit (No.8) only.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.1 Boy -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/1.png" alt="Boy" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>Boy</h2>
+                            <span class="card-explain-number">No.1</span>
+                            <span class="card-count">2 cards</span>
+                        </div>
+                        <div class="card-explain-effect">Ability: Revolution</div>
+                        <div class="card-explain-text">
+                            <strong>1st card played:</strong> No effect.<br>
+                            <strong>2nd card played:</strong> When the 2nd Boy appears in play, it activates the same ability as Sword Maiden (No.9) &mdash; force an opponent to draw 1 card, reveal both cards in their hand, and choose 1 to discard.<br>
+                            The lowest number in the game, but becomes a powerful late-game finisher when both appear.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.2 Trainee -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/2.png" alt="Trainee" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>Trainee</h2>
+                            <span class="card-explain-number">No.2</span>
+                            <span class="card-count">2 cards</span>
+                        </div>
+                        <div class="card-explain-effect">Ability: Charge</div>
+                        <div class="card-explain-text">
+                            Choose an opponent and declare a card name. If correct, the opponent is eliminated. If wrong, nothing happens.<br>
+                            A high-risk, high-reward card. When combined with prior reconnaissance from Scout, it becomes deadly accurate.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.3 Scout -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/3.png" alt="Scout" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>Scout</h2>
+                            <span class="card-explain-number">No.3</span>
+                            <span class="card-count">2 cards</span>
+                        </div>
+                        <div class="card-explain-effect">Ability: Reconnaissance</div>
+                        <div class="card-explain-text">
+                            Choose an opponent and secretly view their hand. You are prohibited from sharing this information with other players.<br>
+                            The intelligence specialist. Use the gathered information to plan your next move strategically.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.4 Warrior -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/4.png" alt="Warrior" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>Warrior</h2>
+                            <span class="card-explain-number">No.4</span>
+                            <span class="card-count">2 cards</span>
+                        </div>
+                        <div class="card-explain-effect">Ability: Combat</div>
+                        <div class="card-explain-text">
+                            Choose an opponent and force them to draw 1 card from the draw pile. Without seeing their hand, name a card and force them to discard it if they have it.<br>
+                            Requires guesswork without information, but combining with Scout greatly improves accuracy.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.5 Brewer -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/5.png" alt="Brewer" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>Brewer</h2>
+                            <span class="card-explain-number">No.5</span>
+                            <span class="card-count">1 card</span>
+                        </div>
+                        <div class="card-explain-effect">Ability: Brewing</div>
+                        <div class="card-explain-text">
+                            Choose an opponent and both reveal your hands. The player with the lower number is eliminated. If tied, both are eliminated.<br>
+                            A direct duel card. Most effective when you're confident your hand is stronger than your opponent's.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.6 Masu Craftsman -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/6.png" alt="Masu Craftsman" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>Masu Craftsman</h2>
+                            <span class="card-explain-number">No.6</span>
+                            <span class="card-count">2 cards</span>
+                        </div>
+                        <div class="card-explain-effect">Ability: Craft / Guardian</div>
+                        <div class="card-explain-text">
+                            <strong>1st card (Craft):</strong> No effect.<br>
+                            <strong>2nd card (Guardian):</strong> Declare "FOMUS" to summon the Guardian Masu. Gain a barrier that negates elimination once.<br>
+                            Serves as insurance. Reaches its full potential when both cards are played.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.7 Farmer -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/7.png" alt="Farmer" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>Farmer</h2>
+                            <span class="card-explain-number">No.7</span>
+                            <span class="card-count">2 cards</span>
+                        </div>
+                        <div class="card-explain-effect">Ability: Cultivate / Harvest</div>
+                        <div class="card-explain-text">
+                            <strong>1st card (Cultivate):</strong> On your next turn, look at the top 2 cards of the draw pile and choose 1. Return the other.<br>
+                            <strong>2nd card (Harvest):</strong> Look at the top 3 cards and choose 1. Return the rest.<br>
+                            The deck manipulation specialist. Efficiently acquire the cards you need.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.8 Spirit -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/8.png" alt="Spirit" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>Spirit</h2>
+                            <span class="card-explain-number">No.8</span>
+                            <span class="card-count">2 cards</span>
+                        </div>
+                        <div class="card-explain-effect">Ability: Telepathy</div>
+                        <div class="card-explain-text">
+                            Choose an opponent and swap hands with them.<br>
+                            Can be used to steal a strong card when your hand is weak, or to force an unwanted card onto an opponent. Situational awareness is key.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.9 Sword Maiden -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/9.png" alt="Sword Maiden" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>Sword Maiden</h2>
+                            <span class="card-explain-number">No.9</span>
+                            <span class="card-count">1 card</span>
+                        </div>
+                        <div class="card-explain-effect">Ability: Flash Strike</div>
+                        <div class="card-explain-text">
+                            Choose an opponent, force them to draw 1 card, then reveal both cards in their hand. Choose 1 card for them to discard.<br>
+                            <strong>The only card capable of permanently defeating Kukunochi (No.10).</strong> It negates Kukunochi's Regeneration ability, resulting in a true elimination.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No.10 Kukunochi -->
+            <div class="card-explain">
+                <div class="card-explain-inner">
+                    <img src="images/10.png" alt="Kukunochi" class="card-explain-img">
+                    <div class="card-explain-body">
+                        <div class="card-explain-title">
+                            <h2>Kukunochi</h2>
+                            <span class="card-explain-number">No.10</span>
+                            <span class="card-count">1 card</span>
+                        </div>
+                        <div class="card-explain-effect">Ability: Regeneration</div>
+                        <div class="card-explain-text">
+                            Cannot be played from your hand. Can only be discarded through opponents' card abilities.<br>
+                            When eliminated by <strong>any card other than Sword Maiden (No.9)</strong>, discard your entire hand and draw the Rebirth Card (Young Kukunochi) to revive.<br>
+                            As the highest number in the game, keeping it in your hand gives an overwhelming advantage in the final number comparison when the draw pile runs out.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA (No Purchase) -->
+            <div class="cards-page-cta">
+                <p>Now that you know the card abilities, give SILVA a try!</p>
+                <a href="index.html#rules" class="btn btn-secondary btn-outline">
+                    <span class="btn-text">View Rules</span>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="copyright">
+                        <p>&copy; 2025 FOMUS. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
