@@ -21,6 +21,15 @@ const PRODUCTS = {
 };
 
 module.exports = async (req, res) => {
+  if (req.method === 'GET') {
+    const key = process.env.STRIPE_SECRET_KEY || '';
+    return res.status(200).json({
+      hasKey: !!key,
+      prefix: key.substring(0, 12) + '...',
+      length: key.length,
+    });
+  }
+
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed' });
