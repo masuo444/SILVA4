@@ -12,6 +12,23 @@ const PRODUCTS = {
 };
 
 module.exports = async (req, res) => {
+  if (req.method === 'GET') {
+    const key = process.env.STRIPE_SECRET_KEY || '';
+    // Check for non-ASCII characters
+    const nonAscii = [];
+    for (let i = 0; i < key.length; i++) {
+      if (key.charCodeAt(i) > 127) {
+        nonAscii.push({ index: i, code: key.charCodeAt(i), char: key[i] });
+      }
+    }
+    return res.status(200).json({
+      length: key.length,
+      prefix: key.substring(0, 15),
+      suffix: key.substring(key.length - 5),
+      nonAscii,
+    });
+  }
+
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed' });
