@@ -565,10 +565,10 @@
                         </div>
 
                         <div class="purchase-actions">
-                            <a href="https://silva.official.ec/purchase" class="btn btn-primary btn-large btn-glow" target="_blank" rel="noopener">
+                            <button onclick="handleCheckout('standard')" class="btn btn-primary btn-large btn-glow">
                                 <span class="btn-text">今すぐ購入</span>
                                 <span class="btn-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                            </a>
+                            </button>
                             <p class="purchase-note">
                                 <span class="note-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></span>
                                 <span class="note-text">在庫状況により発送までお時間をいただく場合があります</span>
@@ -622,10 +622,10 @@
                         </div>
 
                         <div class="purchase-actions">
-                            <a href="https://silva.official.ec/purchase-masu" class="btn btn-primary btn-large btn-glow" target="_blank" rel="noopener">
+                            <button onclick="handleCheckout('masu')" class="btn btn-primary btn-large btn-glow">
                                 <span class="btn-text">枡セットを購入</span>
                                 <span class="btn-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                            </a>
+                            </button>
                             <p class="purchase-note">
                                 <span class="note-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></span>
                                 <span class="note-text">数量限定のプレミアムセットです</span>
@@ -1092,6 +1092,34 @@
             return '申し訳ありません、その質問にはお答えできませんでした。\n「ククノチ」「セットアップ」「ターンの流れ」「勝利条件」など、SILVAのルールやカード名でお尋ねください。';
         }
     })();
+    </script>
+
+    <!-- Stripe Checkout -->
+    <script>
+    async function handleCheckout(product) {
+        const btn = event.currentTarget;
+        const originalText = btn.querySelector('.btn-text').textContent;
+        btn.querySelector('.btn-text').textContent = '処理中...';
+        btn.disabled = true;
+
+        try {
+            const res = await fetch('/api/create-checkout-session', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ product }),
+            });
+            const data = await res.json();
+            if (data.url) {
+                window.location.href = data.url;
+            } else {
+                throw new Error(data.error || 'エラーが発生しました');
+            }
+        } catch (err) {
+            alert('決済の開始に失敗しました。もう一度お試しください。');
+            btn.querySelector('.btn-text').textContent = originalText;
+            btn.disabled = false;
+        }
+    }
     </script>
 
     <!-- Analytics (if needed) -->

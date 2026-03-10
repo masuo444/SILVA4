@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ご購入ありがとうございます | SILVA</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .success-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .success-card {
+            background: var(--color-surface, rgba(255,255,255,0.05));
+            border: 1px solid var(--color-border, rgba(255,255,255,0.1));
+            border-radius: 1.5rem;
+            padding: 3rem 2rem;
+            max-width: 520px;
+            text-align: center;
+        }
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: rgba(61, 168, 110, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .success-icon svg {
+            color: var(--color-primary, #3da86e);
+        }
+        .success-title {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--color-text, #fff);
+        }
+        .success-message {
+            color: var(--color-text-muted, rgba(255,255,255,0.7));
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        .success-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-page">
+        <div class="success-card">
+            <div class="success-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                </svg>
+            </div>
+            <h1 class="success-title">ご購入ありがとうございます！</h1>
+            <p class="success-message">
+                ご注文を受け付けました。<br>
+                確認メールをお送りしましたのでご確認ください。<br>
+                商品の発送準備が整い次第、ご連絡いたします。
+            </p>
+            <div class="success-actions">
+                <a href="/" class="btn btn-primary">トップページへ</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
