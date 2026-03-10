@@ -59,6 +59,10 @@ module.exports = async (req, res) => {
     return res.status(200).json({ url: session.url });
   } catch (err) {
     console.error('Stripe error:', err.message);
-    return res.status(500).json({ error: 'Failed to create checkout session' });
+    return res.status(500).json({
+      error: 'Failed to create checkout session',
+      detail: err.message,
+      hasKey: !!process.env.STRIPE_SECRET_KEY,
+    });
   }
 };
