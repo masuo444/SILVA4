@@ -27,17 +27,18 @@ module.exports = async (req, res) => {
     const item = PRODUCTS[product];
     const origin = req.headers.origin || `https://${req.headers.host}`;
 
-    const params = new URLSearchParams();
-    params.append('payment_method_types[]', 'card');
-    params.append('line_items[0][price_data][currency]', 'jpy');
-    params.append('line_items[0][price_data][product_data][name]', item.name);
-    params.append('line_items[0][price_data][product_data][description]', item.description);
-    params.append('line_items[0][price_data][unit_amount]', item.amount);
-    params.append('line_items[0][quantity]', '1');
-    params.append('mode', 'payment');
-    params.append('shipping_address_collection[allowed_countries][]', 'JP');
-    params.append('success_url', `${origin}/success.html?session_id={CHECKOUT_SESSION_ID}`);
-    params.append('cancel_url', `${origin}/#buy`);
+    const body = [
+      'payment_method_types[]=card',
+      'line_items[0][price_data][currency]=jpy',
+      `line_items[0][price_data][product_data][name]=${encodeURIComponent(item.name)}`,
+      `line_items[0][price_data][product_data][description]=${encodeURIComponent(item.description)}`,
+      `line_items[0][price_data][unit_amount]=${item.amount}`,
+      'line_items[0][quantity]=1',
+      'mode=payment',
+      'shipping_address_collection[allowed_countries][]=JP',
+      `success_url=${encodeURIComponent(`${origin}/success.html?session_id={CHECKOUT_SESSION_ID}`)}`,
+      `cancel_url=${encodeURIComponent(`${origin}/#buy`)}`,
+    ].join('&');
 
     const response = await fetch('https://api.stripe.com/v1/checkout/sessions', {
       method: 'POST',
@@ -45,7 +46,7 @@ module.exports = async (req, res) => {
         'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`,
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: params.toString(),
+      body,
     });
 
     const data = await response.json();
